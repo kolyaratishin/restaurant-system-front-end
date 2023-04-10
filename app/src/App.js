@@ -1,10 +1,10 @@
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from "./components/Header/Header";
-import Tables from "./components/Tables/Tables";
 import Statistics from "./components/Statistics/Statistics";
 import MenuContainer from "./components/Menu/MenuContainer";
 import TablesContainer from "./components/Tables/TablesContainer";
+import ReceiptContainer from "./components/Receipt/ReceiptContainer";
 
 function App() {
     return (
@@ -14,6 +14,8 @@ function App() {
                 <Routes>
                     <Route path="/tables"
                            element={<TablesContainer/>}/>
+                    <Route path="/tables/:tableId?"
+                           element={<ReceiptContainer/>}/>
                     <Route path="/menu"
                            element={<MenuContainer/>}/>
                     <Route path="/statistics"
