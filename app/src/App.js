@@ -2,8 +2,8 @@ import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from "./components/Header/Header";
 import Tables from "./components/Tables/Tables";
-import Menu from "./components/Menu/Menu";
 import Statistics from "./components/Statistics/Statistics";
+import MenuContainer from "./components/Menu/MenuContainer";
 
 function App() {
     return (
@@ -14,7 +14,7 @@ function App() {
                     <Route path="/tables"
                            element={<Tables/>}/>
                     <Route path="/menu"
-                           element={<Menu/>}/>
+                           element={<MenuContainer/>}/>
                     <Route path="/statistics"
                            element={<Statistics/>}/>
                 </Routes>

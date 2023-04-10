@@ -1,7 +1,8 @@
 import classes from "./Menu.module.css";
 import MenuItem from "./MenuItem/MenuItem";
 
-function Menu() {
+function Menu(props) {
+    let menu = props.menu;
     return (
         <div>
             <table className={classes.menu_table}>
@@ -11,7 +12,7 @@ function Menu() {
                     <th>Ціна</th>
                     <th>Розмір</th>
                 </tr>
-                <MenuItem name={"Піца"} price={160.00} size={"500г"}/>
+                {menu.map(item => <MenuItem name={item.name} price={item.price} size={item.size}/>)}
             </table>
         </div>
     );
