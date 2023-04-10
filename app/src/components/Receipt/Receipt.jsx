@@ -12,6 +12,11 @@ function Receipt(props) {
             totalPrice = currentReceipt.totalPrice;
         }
     }
+
+    let countReceipt = () => {
+        props.countReceipt();
+    }
+
     return (
         <div className={classes.receipt_content}>
             <div className={classes.receipt}>
@@ -27,6 +32,7 @@ function Receipt(props) {
                         <th colSpan="3">Cума: {totalPrice}</th>
                     </tr>
                 </table>
+                <button onClick={countReceipt}>Обрахувати</button>
             </div>
             <div className={classes.menu}>
                 <MenuContainer/>

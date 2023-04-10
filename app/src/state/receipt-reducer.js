@@ -1,4 +1,5 @@
 const SET_CURRENT_RECEIPT = "SET_CURRENT_RECEIPT"
+const DELETE_MEALS_FROM_RECEIPT = "DELETE_MEALS_FROM_RECEIPT"
 
 let initialState = {
     receipts: [
@@ -24,6 +25,9 @@ const receiptReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_CURRENT_RECEIPT:
             return {...state, currentReceipt: action.currentReceipt};
+        case DELETE_MEALS_FROM_RECEIPT:
+            const newReceipts = clearMealsFromReceipt(state);
+            return {...state, receipts: [...newReceipts]};
         default:
             return state;
     }
@@ -36,8 +40,31 @@ export const getReceiptById = (receiptId) => {
     }
 }
 
+export const countReceipt = () => {
+    return (dispatch) => {
+        //make api request
+        dispatch(deleteMealsFromReceipt());
+        dispatch(setCurrentReceipt(null));
+    }
+}
+
 const setCurrentReceipt = (currentReceipt) => {
     return {type: SET_CURRENT_RECEIPT, currentReceipt: {...currentReceipt}};
+}
+
+const deleteMealsFromReceipt = () => {
+    return {type: DELETE_MEALS_FROM_RECEIPT};
+}
+
+const clearMealsFromReceipt = (state) => {
+    let newReceipts = [...state.receipts];
+
+    let receiptId = newReceipts.findIndex(meal => meal.id === state.currentReceipt.id);
+    if (receiptId > -1) {
+        newReceipts[receiptId].meals = [];
+        newReceipts[receiptId].totalPrice = 0;
+    }
+    return newReceipts;
 }
 
 export default receiptReducer;

@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import Receipt from "./Receipt";
 import {withRouter} from "../../hoc/withRouter";
 import {compose} from "redux";
-import {getReceiptById} from "../../state/receipt-reducer";
+import {countReceipt, getReceiptById} from "../../state/receipt-reducer";
 
 class ReceiptContainer extends Component {
     componentDidMount() {
@@ -13,7 +13,7 @@ class ReceiptContainer extends Component {
 
     render() {
         return (
-            <Receipt currentReceipt={this.props.currentReceipt}/>
+            <Receipt currentReceipt={this.props.currentReceipt} countReceipt={this.props.countReceipt}/>
         );
     }
 }
@@ -25,8 +25,10 @@ function mapStateToProps(state) {
     }
 }
 export default compose(
-    connect(mapStateToProps, {
-        getReceiptById
-    }),
+    connect(mapStateToProps,
+        {
+            getReceiptById,
+            countReceipt
+        }),
     withRouter,
 )(ReceiptContainer);
