@@ -1,0 +1,10 @@
+.table {
+    width: 150px;
+    height: 70px;
+    background-color: lightcoral;
+    color: #282c34;
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 50px;
+    text-align: center;
+}
