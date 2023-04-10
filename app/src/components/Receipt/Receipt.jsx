@@ -5,9 +5,12 @@ import ReceiptItem from "./ReceiptItem/ReceiptItem";
 function Receipt(props) {
     let meals = []
     let currentReceipt = props.currentReceipt;
+    let totalPrice = 0;
     if (currentReceipt) {
-        if (currentReceipt.meals)
+        if (currentReceipt.meals) {
             meals = currentReceipt.meals;
+            totalPrice = currentReceipt.totalPrice;
+        }
     }
     return (
         <div className={classes.receipt_content}>
@@ -19,8 +22,10 @@ function Receipt(props) {
                         <th>Кількість</th>
                         <th>Ціна</th>
                     </tr>
-                    {meals.map(meal => <ReceiptItem name={meal.name} price={meal.price} amount={meal.amount}
-                                                    totalPrice="1"/>)}
+                    {meals.map(meal => <ReceiptItem name={meal.name} price={meal.price} amount={meal.amount}/>)}
+                    <tr>
+                        <th colSpan="3">Cума: {totalPrice}</th>
+                    </tr>
                 </table>
             </div>
             <div className={classes.menu}>
