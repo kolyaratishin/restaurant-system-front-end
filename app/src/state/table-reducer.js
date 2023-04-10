@@ -1,9 +1,9 @@
 let initialState = {
-    menu: [
-        {id: 1, name: "Піца", price: 160.00, size:"500г"},
-        {id: 1, name: "Піца 2", price: 170.00, size:"600г"},
-        {id: 1, name: "Піца 3", price: 180.00, size:"700г"},
-        {id: 1, name: "Піца 3", price: 190.00, size:"800г"},
+    tables: [
+        {id: 1, name: "Стіл 1", status: "FREE"},
+        {id: 2, name: "Стіл 2", status: "FREE"},
+        {id: 3, name: "Стіл 3", status: "FREE"},
+        {id: 4, name: "Стіл 4", status: "FREE"},
     ]
 }
 

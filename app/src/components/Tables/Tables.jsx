@@ -1,12 +1,10 @@
 import Table from "./Table/Table";
 
-function Tables() {
+function Tables(props) {
+    let tables = props.tables;
     return (
         <div>
-            <Table name="table 1"/>
-            <Table name="table 2"/>
-            <Table name="table 3"/>
-            <Table name="table 4"/>
+            {tables.map(table => <Table name={table.name} status={table.status}/>)}
         </div>
     );
 }

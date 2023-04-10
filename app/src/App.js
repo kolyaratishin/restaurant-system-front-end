@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Tables from "./components/Tables/Tables";
 import Statistics from "./components/Statistics/Statistics";
 import MenuContainer from "./components/Menu/MenuContainer";
+import TablesContainer from "./components/Tables/TablesContainer";
 
 function App() {
     return (
@@ -12,7 +13,7 @@ function App() {
             <div className="app-wrapper-content">
                 <Routes>
                     <Route path="/tables"
-                           element={<Tables/>}/>
+                           element={<TablesContainer/>}/>
                     <Route path="/menu"
                            element={<MenuContainer/>}/>
                     <Route path="/statistics"
