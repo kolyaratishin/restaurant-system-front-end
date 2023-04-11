@@ -1,10 +1,36 @@
+.menu_content {
+    display: flex;
+    margin-top: 10px;
+}
+
 .menu_table {
     text-align: right;
     position: relative;
     border-collapse: collapse;
+    flex: 0 0 600px;
+    margin-right: 100px;
 }
 
 .menu_table td, th {
     border: 1px solid #999;
     padding: 10px 2px 10px 100px;
+}
+
+.menu_form{
+    flex: 0 0 300px;
+    margin-right: 30px;
+    border: 2px solid blue;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.import_export{
+    flex: 1 1 auto;
+}
+
+.form_caption {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
 }
