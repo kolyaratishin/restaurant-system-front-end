@@ -6,9 +6,9 @@ function ReceiptMenuItem(props) {
         const row = element.parentElement.parentElement;
         const rowData = Array.from(row.children).map(cell => cell.innerText); // Отримуємо дані з комірок рядка в масиві
         const meal = {
-            id: rowData[0],
+            id: +rowData[0],
             name: rowData[1],
-            price: rowData[2]
+            price: +rowData[2]
         }
         props.addMealToReceipt(meal);
     };

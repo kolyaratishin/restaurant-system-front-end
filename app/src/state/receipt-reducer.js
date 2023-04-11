@@ -1,6 +1,7 @@
 const SET_CURRENT_RECEIPT = "SET_CURRENT_RECEIPT"
 const DELETE_MEALS_FROM_RECEIPT = "DELETE_MEALS_FROM_RECEIPT"
 const ADD_MEAL = "ADD_MEAL"
+const REMOVE_MEAL = "REMOVE_MEAL"
 
 let initialState = {
     receipts: [
@@ -23,12 +24,21 @@ const receiptReducer = (state = initialState, action) => {
         case DELETE_MEALS_FROM_RECEIPT:
             const newReceipts = clearMealsFromReceipt(state);
             return {...state, receipts: [...newReceipts]};
-        case ADD_MEAL:
+        case ADD_MEAL: {
             const currentReceipt = state.currentReceipt;
             const currentReceiptId = currentReceipt.id;
             const newCurrentReceiptMeals = addMealToCurrentReceipt(action.meal, currentReceipt)
             const receipts = addMealToReceipts(action.meal, currentReceiptId, state.receipts);
             return {...state, receipts: receipts, currentReceipt: {...currentReceipt, meals: newCurrentReceiptMeals}};
+        }
+        case REMOVE_MEAL: {
+            const currentReceipt = state.currentReceipt;
+            const currentReceiptId = currentReceipt.id;
+            const newCurrentReceiptMeals = removeMealFromCurrentReceipt(action.meal, currentReceipt);
+            const receipts =removeMealFromReceipts(action.meal, currentReceiptId, state.receipts);
+            return {...state, receipts: receipts, currentReceipt: {...currentReceipt, meals: newCurrentReceiptMeals}};
+        }
+
         default:
             return state;
     }
@@ -75,8 +85,19 @@ export const addMealToReceipt = (meal) => {
     }
 }
 
+export const removeMealFromReceipt = (meal) => {
+    return (dispatch) => {
+        //make api request
+        dispatch(removeMeal(meal));
+    }
+}
+
 const addMeal = (meal) => {
     return {type: ADD_MEAL, meal};
+}
+
+const removeMeal = (meal) => {
+    return {type: REMOVE_MEAL, meal};
 }
 
 const addMealToCurrentReceipt = (meal, currentReceipt) => {
@@ -91,6 +112,22 @@ const addMealToReceipts = (meal, currentReceiptId, receipts) => {
     let receiptId = newReceipts.findIndex(meal => meal.id === currentReceiptId);
     if (receiptId > -1) {
         newReceipts[receiptId].meals.push(meal);
+        newReceipts[receiptId].totalPrice = 0;
+    }
+    return newReceipts;
+}
+
+const removeMealFromCurrentReceipt = (meal, currentReceipt) => {
+    return [...currentReceipt.meals].filter(item => item.id !== meal.id);
+
+}
+
+const removeMealFromReceipts = (meal, currentReceiptId, receipts) => {
+    let newReceipts = [...receipts];
+
+    let receiptId = newReceipts.findIndex(meal => meal.id === currentReceiptId);
+    if (receiptId > -1) {
+        newReceipts[receiptId].meals = newReceipts[receiptId].meals.filter(item => item.id !== meal.id);
         newReceipts[receiptId].totalPrice = 0;
     }
     return newReceipts;
