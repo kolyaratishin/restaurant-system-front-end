@@ -1,6 +1,6 @@
 import classes from "./Receipt.module.css";
-import MenuContainer from "../Menu/MenuContainer";
 import ReceiptItem from "./ReceiptItem/ReceiptItem";
+import ReceiptMenu from "./ReceiptMenu/ReceiptMenu";
 
 function Receipt(props) {
     let meals = []
@@ -35,7 +35,7 @@ function Receipt(props) {
                 <button onClick={countReceipt}>Обрахувати</button>
             </div>
             <div className={classes.menu}>
-                <MenuContainer/>
+                <ReceiptMenu addMealToReceipt={props.addMealToReceipt} menu={props.menu}/>
             </div>
         </div>
     );

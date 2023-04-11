@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import Receipt from "./Receipt";
 import {withRouter} from "../../hoc/withRouter";
 import {compose} from "redux";
-import {countReceipt, getReceiptById} from "../../state/receipt-reducer";
+import {addMealToReceipt, countReceipt, getReceiptById} from "../../state/receipt-reducer";
 
 class ReceiptContainer extends Component {
     componentDidMount() {
@@ -13,7 +13,8 @@ class ReceiptContainer extends Component {
 
     render() {
         return (
-            <Receipt currentReceipt={this.props.currentReceipt} countReceipt={this.props.countReceipt}/>
+            <Receipt currentReceipt={this.props.currentReceipt} countReceipt={this.props.countReceipt} menu={this.props.menu}
+                     addMealToReceipt={this.props.addMealToReceipt}/>
         );
     }
 }
@@ -21,14 +22,16 @@ class ReceiptContainer extends Component {
 
 function mapStateToProps(state) {
     return {
-        currentReceipt: state.receiptPage.currentReceipt
+        currentReceipt: state.receiptPage.currentReceipt,
+        menu: state.menuPage.menu
     }
 }
 export default compose(
     connect(mapStateToProps,
         {
             getReceiptById,
-            countReceipt
+            countReceipt,
+            addMealToReceipt
         }),
     withRouter,
 )(ReceiptContainer);
