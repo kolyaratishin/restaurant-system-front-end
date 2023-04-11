@@ -1,17 +1,18 @@
 import {Field, reduxForm} from "redux-form";
 import classes from "./MenuForm.module.css";
-
+import {requiredField} from "../../../utils/validators/validators"
+import {Textarea} from "../../common/FormsControls/FormControls";
 
 function MenuForm(props) {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
                 <p className={classes.input_name}>Назва</p>
-                <Field component={"input"} name="name" placeholder="Введіть ім'я продукту"/>
+                <Field component={Textarea} name="name" placeholder="Введіть ім'я продукту" validate={[requiredField]}/>
                 <p className={classes.input_name}>Ціна</p>
-                <Field component={"input"} name="price" placeholder="Введіть ціну продукту"/>
+                <Field component={Textarea} name="price" placeholder="Введіть ціну продукту" validate={[requiredField]}/>
                 <p className={classes.input_name}>Розмір</p>
-                <Field component={"input"} name="size" placeholder="Введіть розмір продукту"/>
+                <Field component={Textarea} name="size" placeholder="Введіть розмір продукту" validate={[requiredField]}/>
             </div>
             <button className={classes.add_button}>Додати</button>
         </form>
