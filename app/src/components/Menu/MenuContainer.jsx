@@ -1,6 +1,7 @@
 import {Component} from "react";
 import Menu from "./Menu";
 import {connect} from "react-redux";
+import {addMealToMenu} from "../../state/menu-reducer";
 
 
 class MenuContainer extends Component {
@@ -14,7 +15,7 @@ class MenuContainer extends Component {
 
     render() {
         return (
-            <Menu menu={this.props.menu}/>
+            <Menu menu={this.props.menu} addMealToMenu={this.props.addMealToMenu}/>
         );
     }
 }
@@ -26,5 +27,7 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {})(MenuContainer);
+export default connect(mapStateToProps, {
+    addMealToMenu
+})(MenuContainer);
 
