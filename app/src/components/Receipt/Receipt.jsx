@@ -14,7 +14,7 @@ function Receipt(props) {
     }
 
     let countReceipt = () => {
-        props.countReceipt();
+        props.countReceipt(props.currentReceipt);
     }
 
     return (

@@ -41,11 +41,11 @@ export const getReceiptById = (receiptId) => {
     }
 }
 
-export const countReceipt = () => {
+export const countReceipt = (currentReceipt) => {
     return (dispatch) => {
         //make api request
         dispatch(deleteMealsFromReceipt());
-        dispatch(setCurrentReceipt(null));
+        dispatch(setCurrentReceipt({...currentReceipt, meals: []}));
     }
 }
 
