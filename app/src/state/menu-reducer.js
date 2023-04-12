@@ -1,14 +1,17 @@
 import {importApi, menuApi} from "../api/api";
 
 const ADD_MEAL_TO_MENU = "ADD_MEAL_TO_MENU"
-const SET_MENU = "SET_MENU"
+const SET_MENU_GROUPS = "SET_MENU_GROUPS"
 
 let initialState = {
-    menu: [
-        {id: 1, name: "Піца", price: 160.00, size: "500г"},
-        {id: 2, name: "Піца 2", price: 170.00, size: "600г"},
-        {id: 3, name: "Піца 3", price: 180.00, size: "700г"},
-        {id: 4, name: "Піца 3", price: 190.00, size: "800г"},
+    menuGroups: [
+        {
+            id: 0,
+            name: "",
+            menu: [
+
+            ]
+        }
     ]
 }
 
@@ -18,8 +21,8 @@ const menuReducer = (state = initialState, action) => {
             const newMenu = [...state.menu];
             newMenu.push(action.meal);
             return {...state, menu: newMenu};
-        case SET_MENU:
-            return {...state, menu: [...action.menu]}
+        case SET_MENU_GROUPS:
+            return {...state, menuGroups: [...action.menuGroups]}
         default:
             return state;
     }
@@ -35,18 +38,18 @@ export const addMealToMenu = (meal) => {
 const addMeal = (meal) => {
     return {type: ADD_MEAL_TO_MENU, meal};
 }
-export const getMenu = (restaurantId) => {
+export const getMenuGroups = (restaurantId) => {
     return (dispatch) => {
         menuApi.getAll(restaurantId)
             .then(data => {
-                dispatch(setMenu(data.data[0].menu));
+                dispatch(setMenuGroups(data.data));
             })
     }
 }
 
 
-const setMenu = (menu) => {
-    return {type: SET_MENU, menu};
+const setMenuGroups = (menuGroups) => {
+    return {type: SET_MENU_GROUPS, menuGroups};
 }
 
 export const importMenuFromFile = (formData, restaurantId) => {
@@ -55,7 +58,7 @@ export const importMenuFromFile = (formData, restaurantId) => {
             .then(() => {
                 menuApi.getAll(restaurantId)
                     .then(data => {
-                        dispatch(setMenu(data));
+                        dispatch(setMenuGroups(data));
                     })
             })
     }

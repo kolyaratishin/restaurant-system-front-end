@@ -10,7 +10,8 @@ function Menu(props) {
         props.addMealToMenu(values);
     }
 
-    let menu = props.menu;
+
+    let menuGroups = props.menuGroups;
     return (
         <div className={classes.menu_content}>
             <div>
@@ -21,7 +22,21 @@ function Menu(props) {
                         <th>Ціна</th>
                         <th>Розмір</th>
                     </tr>
-                    {menu.map(item => <MenuItem name={item.name} price={item.price} size={item.size}/>)}
+                    {menuGroups.map(item => {
+                            return (
+                                <tbody>
+                                <tr>
+                                    <th className={classes.group_name} colSpan="3">
+                                        {item.name}
+                                    </th>
+                                </tr>
+                                {item.menu.map(menuItem => <MenuItem name={menuItem.name} price={menuItem.price}
+                                                                size={menuItem.size}/>)}
+                                </tbody>
+                            )
+                        }
+                    )
+                    }
                 </table>
             </div>
             <div className={classes.menu_form}>
