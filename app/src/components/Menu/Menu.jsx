@@ -1,8 +1,10 @@
 import classes from "./Menu.module.css";
 import MenuItem from "./MenuItem/MenuItem";
 import MenuForm from "./MenuForm/MenuForm";
+import Import from "../Import/Import";
 
 function Menu(props) {
+    // const restaurantId = props.restaurantId;
 
     const addMealToMenu = (values) => {
         props.addMealToMenu(values);
@@ -29,7 +31,7 @@ function Menu(props) {
                 <MenuForm onSubmit={addMealToMenu}/>
             </div>
             <div className={classes.import_export}>
-                Import/Export
+                <Import/>
             </div>
         </div>
     );
