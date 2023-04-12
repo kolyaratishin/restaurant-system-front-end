@@ -1,12 +1,12 @@
 import {Component} from "react";
 import Menu from "./Menu";
 import {connect} from "react-redux";
-import {addMealToMenu} from "../../state/menu-reducer";
+import {addMealToMenu, getMenu} from "../../state/menu-reducer";
 
 
 class MenuContainer extends Component {
     componentDidMount() {
-
+        this.props.getMenu(this.props.restaurantId);
     }
 
     onPageChanged = (page) => {
@@ -15,7 +15,7 @@ class MenuContainer extends Component {
 
     render() {
         return (
-            <Menu menu={this.props.menu} addMealToMenu={this.props.addMealToMenu}/>
+            <Menu menu={this.props.menu} addMealToMenu={this.props.addMealToMenu} restaurantId={this.props.restaurantId}/>
         );
     }
 }
@@ -23,11 +23,13 @@ class MenuContainer extends Component {
 
 function mapStateToProps(state) {
     return {
-        menu: state.menuPage.menu
+        menu: state.menuPage.menu,
+        restaurantId: state.restaurant.restaurantId
     }
 }
 
 export default connect(mapStateToProps, {
-    addMealToMenu
+    addMealToMenu,
+    getMenu
 })(MenuContainer);
 
