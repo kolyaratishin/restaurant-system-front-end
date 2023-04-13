@@ -10,7 +10,7 @@ function ReceiptMenuItem(props) {
             name: rowData[1],
             price: +rowData[2]
         }
-        props.addMealToReceipt(meal);
+        props.addMealToReceipt(meal, props.receiptId);
     };
 
     return (

@@ -25,3 +25,18 @@ export const tableApi = {
         return axiosInstance.get(`restaurant/${restaurantId}/tables`);
     },
 }
+
+export const receiptApi = {
+    getReceiptById(id) {
+        return axiosInstance.get(`receipt/${id}`);
+    },
+    addMealToReceipt(mealId, receiptId){
+        return axiosInstance.post(`receipt/meal`, {
+            mealId,
+            receiptId
+        });
+    },
+    deleteMealFromReceipt(mealId, receiptId){
+        return axiosInstance.delete(`receipt/${receiptId}/meal/${mealId}`);
+    }
+}

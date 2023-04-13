@@ -27,7 +27,7 @@ function Receipt(props) {
                         <th>Кількість</th>
                         <th>Ціна</th>
                     </tr>
-                    {meals.map(meal => <ReceiptItem id={meal.id} name={meal.name} price={meal.price} amount={meal.amount} removeMealFromReceipt={props.removeMealFromReceipt}/>)}
+                    {meals.map(meal => <ReceiptItem receiptId={props.currentReceipt.id} id={meal.id} name={meal.name} price={meal.price} amount={meal.amount} removeMealFromReceipt={props.removeMealFromReceipt}/>)}
                     <tr>
                         <th colSpan="3">Cума: {totalPrice}</th>
                     </tr>
@@ -35,7 +35,7 @@ function Receipt(props) {
                 <button className={classes.count_button} onClick={countReceipt}>Обрахувати</button>
             </div>
             <div className={classes.menu}>
-                <ReceiptMenu addMealToReceipt={props.addMealToReceipt} menu={props.menu}/>
+                <ReceiptMenu receiptId={props.currentReceipt.id} addMealToReceipt={props.addMealToReceipt} menuGroups={props.menuGroups}/>
             </div>
         </div>
     );

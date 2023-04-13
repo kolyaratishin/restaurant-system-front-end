@@ -10,7 +10,7 @@ function ReceiptItem(props) {
             name: rowData[1],
             price: +rowData[2]
         }
-        props.removeMealFromReceipt(meal);
+        props.removeMealFromReceipt(meal, props.receiptId);
     };
 
     return (

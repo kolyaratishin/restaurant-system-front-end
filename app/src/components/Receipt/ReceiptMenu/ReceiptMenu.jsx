@@ -3,7 +3,7 @@ import ReceiptMenuItem from "./ReceiptMenuItem/ReceiptMenuItem";
 
 
 function ReceiptMenu(props) {
-    let menu = props.menu;
+    let menuGroups = props.menuGroups;
     return (
         <div>
             <table className={classes.menu_table}>
@@ -13,7 +13,23 @@ function ReceiptMenu(props) {
                     <th>Ціна</th>
                     <th>Розмір</th>
                 </tr>
-                {menu.map(item => <ReceiptMenuItem id={item.id} name={item.name} price={item.price} size={item.size} addMealToReceipt={props.addMealToReceipt}/>)}
+                {menuGroups.map(item => {
+                        return (
+                            <tbody>
+                            <tr>
+                                <th className={classes.group_name} colSpan="3">
+                                    {item.name}
+                                </th>
+                            </tr>
+                            {
+                                item.menu.map(menuItem => <ReceiptMenuItem receiptId={props.receiptId} id={menuItem.id} name={menuItem.name} price={menuItem.price}
+                                                                 size={menuItem.size} addMealToReceipt={props.addMealToReceipt}/>)}
+                            </tbody>
+                        )
+                    }
+                )
+                }
+
             </table>
         </div>
     );
