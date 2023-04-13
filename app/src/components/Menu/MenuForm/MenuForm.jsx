@@ -9,7 +9,8 @@ function MenuForm(props) {
         <form onSubmit={props.handleSubmit}>
             <div>
                 <p className={classes.input_name}>Назва</p>
-                <Field component={Textarea} name="name" placeholder="Введіть ім'я продукту" validate={[requiredField]}/>
+                <Field component={Textarea} name="name" placeholder="Введіть ім'я продукту"
+                       validate={[requiredField]}/>
                 <p className={classes.input_name}>Ціна</p>
                 <Field component={Textarea} name="price" placeholder="Введіть ціну продукту"
                        validate={[requiredField]}/>
