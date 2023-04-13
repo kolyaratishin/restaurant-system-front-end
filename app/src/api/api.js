@@ -15,6 +15,9 @@ export const menuApi = {
     getAll(restaurantId) {
         return axiosInstance.get(`restaurant/${restaurantId}/menu`);
     },
+    save(meal){
+        return axiosInstance.post(`meal`, meal);
+    }
 }
 
 export const tableApi = {

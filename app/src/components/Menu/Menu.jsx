@@ -4,7 +4,6 @@ import MenuForm from "./MenuForm/MenuForm";
 import Import from "../Import/Import";
 
 function Menu(props) {
-    // const restaurantId = props.restaurantId;
 
     const addMealToMenu = (values) => {
         props.addMealToMenu(values);
@@ -43,7 +42,7 @@ function Menu(props) {
                 <div className={classes.form_caption}>
                     ДОДАВАННЯ НОВОГО ПРОДУКТУ
                 </div>
-                <MenuForm onSubmit={addMealToMenu}/>
+                <MenuForm onSubmit={addMealToMenu} menuGroups={menuGroups}/>
             </div>
             <div className={classes.import_export}>
                 <Import/>

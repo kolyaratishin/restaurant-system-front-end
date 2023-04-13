@@ -17,10 +17,21 @@ let initialState = {
 
 const menuReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_MEAL_TO_MENU:
-            const newMenu = [...state.menu];
-            newMenu.push(action.meal);
-            return {...state, menu: newMenu};
+        case ADD_MEAL_TO_MENU: {
+            const newMenuGroups = [...state.menuGroups];
+            const actionData = action.meal.data;
+            const mealGroupId = actionData.mealGroupId;
+            let mealGroupIdFromState = newMenuGroups.findIndex(menuGroup => menuGroup.id === mealGroupId);
+            if (mealGroupIdFromState > -1) {
+                newMenuGroups[mealGroupIdFromState].menu.push({
+                    id: actionData.id,
+                    name: actionData.name,
+                    price: actionData.price,
+                });
+            }
+            debugger
+            return {...state, menuGroups: [...newMenuGroups]}
+        }
         case SET_MENU_GROUPS:
             return {...state, menuGroups: [...action.menuGroups]}
         default:
@@ -30,8 +41,11 @@ const menuReducer = (state = initialState, action) => {
 
 export const addMealToMenu = (meal) => {
     return (dispatch) => {
-        //make api request
-        dispatch(addMeal(meal));
+        menuApi.save(meal)
+            .then(data => {
+                dispatch(addMeal(data));
+            });
+
     }
 }
 
