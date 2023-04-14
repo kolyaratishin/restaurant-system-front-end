@@ -23,6 +23,12 @@ export const menuApi = {
     },
     getMealGroupById(menuGroupId){
         return axiosInstance.get(`group/${menuGroupId}`);
+    },
+    addMenuGroup(groupName, restaurantId){
+        return axiosInstance.post(`group`, {
+            name: groupName,
+            restaurantId
+        });
     }
 }
 

@@ -2,6 +2,7 @@ import {importApi, menuApi} from "../api/api";
 
 const ADD_MEAL_TO_MENU = "ADD_MEAL_TO_MENU"
 const SET_MENU_GROUPS = "SET_MENU_GROUPS"
+const ADD_MENU_GROUP = "ADD_MENU_GROUP"
 
 let initialState = {
     menuGroups: [
@@ -33,6 +34,11 @@ const menuReducer = (state = initialState, action) => {
         }
         case SET_MENU_GROUPS:
             return {...state, menuGroups: [...action.menuGroups]}
+        case ADD_MENU_GROUP:{
+            const newMenuGroups = [...state.menuGroups];
+            newMenuGroups.push(action.menuGroup);
+            return {...state, menuGroups: [...newMenuGroups]};
+        }
         default:
             return state;
     }
@@ -91,6 +97,20 @@ const getAllMenuGroups = (restaurantId, dispatch) => {
         .then(data => {
             dispatch(setMenuGroups(data.data));
         })
+}
+
+export const addMenuGroup = (groupName, restaurantId) => {
+    return (dispatch) => {
+        menuApi.addMenuGroup(groupName, restaurantId)
+            .then(data => {
+                dispatch(addMenuGroupAC(data.data));
+            });
+
+    }
+}
+
+const addMenuGroupAC = (menuGroup) => {
+    return {type: ADD_MENU_GROUP, menuGroup};
 }
 
 export default menuReducer;

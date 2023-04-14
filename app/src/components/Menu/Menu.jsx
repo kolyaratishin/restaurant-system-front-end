@@ -1,6 +1,7 @@
 import classes from "./Menu.module.css";
 import MenuItem from "./MenuItem/MenuItem";
 import MenuForm from "./MenuForm/MenuForm";
+import AddGroupForm from "./AddGroupForm/AddGroupForm";
 
 function Menu(props) {
 
@@ -8,6 +9,9 @@ function Menu(props) {
         props.addMealToMenu(values);
     }
 
+    const addMenuGroup = (values) => {
+        props.addMenuGroup(values.groupName, props.restaurantId);
+    }
 
     let menuGroups = props.menuGroups;
     return (
@@ -42,6 +46,12 @@ function Menu(props) {
                     ДОДАВАННЯ НОВОГО ПРОДУКТУ
                 </div>
                 <MenuForm onSubmit={addMealToMenu} menuGroups={menuGroups}/>
+            </div>
+            <div className={classes.menu_form}>
+                <div className={classes.form_caption}>
+                    ДОДАВАННЯ НОВОЇ ГРУПИ
+                </div>
+                <AddGroupForm onSubmit={addMenuGroup}/>
             </div>
         </div>
     );
