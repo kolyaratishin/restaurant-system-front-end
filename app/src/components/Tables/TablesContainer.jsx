@@ -1,7 +1,7 @@
 import {Component} from "react";
 import {connect} from "react-redux";
 import Tables from "./Tables";
-import {getTables} from "../../state/table-reducer";
+import {addTable, getTables} from "../../state/table-reducer";
 
 class TablesContainer extends Component {
     componentDidMount() {
@@ -10,7 +10,7 @@ class TablesContainer extends Component {
 
     render() {
         return (
-            <Tables tables={this.props.tables} restaurantId={this.props.restaurantId}/>
+            <Tables tables={this.props.tables} restaurantId={this.props.restaurantId} addTable={this.props.addTable}/>
         );
     }
 }
@@ -24,5 +24,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-    getTables
+    getTables,
+    addTable
 })(TablesContainer);
