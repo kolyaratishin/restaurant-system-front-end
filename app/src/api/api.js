@@ -59,5 +59,8 @@ export const receiptApi = {
     },
     deleteMealFromReceipt(mealId, receiptId) {
         return axiosInstance.delete(`receipt/${receiptId}/meal/${mealId}`);
+    },
+    countReceipt(receiptId) {
+        return axiosInstance.post(`receipt/count/${receiptId}`);
     }
 }

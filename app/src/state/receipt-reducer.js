@@ -34,18 +34,16 @@ export const getReceiptById = (receiptId) => {
 
 export const countReceipt = (currentReceipt) => {
     return (dispatch) => {
-        //make api request
-        dispatch(deleteMealsFromReceipt());
-        dispatch(setCurrentReceipt({...currentReceipt, meals: []}));
+        receiptApi.countReceipt(currentReceipt.id)
+            .then(order => {
+                console.log(order);
+                dispatch(setCurrentReceipt({...currentReceipt, meals: [], totalPrice: 0}));
+            })
     }
 }
 
 const setCurrentReceipt = (currentReceipt) => {
     return {type: SET_CURRENT_RECEIPT, currentReceipt: {...currentReceipt}};
-}
-
-const deleteMealsFromReceipt = () => {
-    return {type: DELETE_MEALS_FROM_RECEIPT};
 }
 
 const clearMealsFromReceipt = (state) => {
