@@ -12,6 +12,9 @@ function Header() {
             <div className={classes.item}>
                 <NavLink to="/statistics" className={isActive}>Статистика</NavLink>
             </div>
+            <div className={classes.item}>
+                <NavLink to="/import-export" className={isActive}>Імпорт/Експорт</NavLink>
+            </div>
         </header>
     );
 }

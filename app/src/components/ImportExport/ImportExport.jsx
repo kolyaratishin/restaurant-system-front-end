@@ -1,4 +1,6 @@
-function Import() {
+import Import from "./Import/Import";
+
+function ImportExport() {
     const handleFileChange = (event) => {
         const file = event.target.files[0]; // Отримуємо перший вибраний файл
         const formData = new FormData(); // Створюємо об'єкт FormData для відправки файлу на сервер
@@ -8,14 +10,9 @@ function Import() {
 
     return (
         <div>
-            <div>
-                Виберіть файл для імпорту даних в меню
-            </div>
-            <div>
-                <input type="file" onChange={handleFileChange}/>
-            </div>
+            <Import/>
         </div>
     );
 }
 
-export default Import;
+export default ImportExport;
