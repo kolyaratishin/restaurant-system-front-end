@@ -13,6 +13,14 @@ function Menu(props) {
         props.addMenuGroup(values.groupName, props.restaurantId);
     }
 
+    const removeMenuGroup = (event) => {
+        const element = event.target; // Отримуємо HTML елемент, на якому відбувся клік
+        const row = element.parentElement.parentElement;
+        const rowData = Array.from(row.children).map(cell => cell.innerText); // Отримуємо дані з комірок рядка в масиві
+        const groupId= +rowData[0];
+        props.removeMenuGroup(groupId);
+    };
+
     let menuGroups = props.menuGroups;
     return (
         <div className={classes.menu_content}>
@@ -28,9 +36,15 @@ function Menu(props) {
                             return (
                                 <tbody>
                                 <tr>
+                                    <td className={classes.row_id}>
+                                        {item.id}
+                                    </td>
                                     <th className={classes.group_name} colSpan="3">
                                         {item.name}
                                     </th>
+                                    <td>
+                                        <button onClick={removeMenuGroup}>-</button>
+                                    </td>
                                 </tr>
                                 {item.menu.map(menuItem => <MenuItem id={menuItem.id} name={menuItem.name} price={menuItem.price}
                                                                 size={menuItem.size} groupId={item.id} removeMealFromMenuGroup={props.removeMealFromMenuGroup}/>)}

@@ -113,4 +113,20 @@ const addMenuGroupAC = (menuGroup) => {
     return {type: ADD_MENU_GROUP, menuGroup};
 }
 
+export const removeMenuGroup = (groupId) => {
+    return (dispatch) => {
+        menuApi.getMealGroupById(groupId)
+            .then(mealGroup => {
+                return mealGroup.data.restaurantId;
+            })
+            .then(restaurantId => {
+                menuApi.removeMenuGroup(groupId)
+                    .then(() => {
+                        getAllMenuGroups(restaurantId, dispatch);
+                    });
+            })
+
+    }
+}
+
 export default menuReducer;

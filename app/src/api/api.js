@@ -29,6 +29,9 @@ export const menuApi = {
             name: groupName,
             restaurantId
         });
+    },
+    removeMenuGroup(groupId){
+        return axiosInstance.delete(`group/${groupId}`);
     }
 }
 

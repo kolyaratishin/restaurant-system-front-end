@@ -1,7 +1,13 @@
 import {Component} from "react";
 import Menu from "./Menu";
 import {connect} from "react-redux";
-import {addMealToMenu, addMenuGroup, getMenuGroups, removeMealFromMenuGroup} from "../../state/menu-reducer";
+import {
+    addMealToMenu,
+    addMenuGroup,
+    getMenuGroups,
+    removeMealFromMenuGroup,
+    removeMenuGroup
+} from "../../state/menu-reducer";
 
 
 class MenuContainer extends Component {
@@ -16,7 +22,8 @@ class MenuContainer extends Component {
     render() {
         return (
             <Menu menuGroups={this.props.menuGroups} addMealToMenu={this.props.addMealToMenu} restaurantId={this.props.restaurantId}
-                  removeMealFromMenuGroup={this.props.removeMealFromMenuGroup} addMenuGroup={this.props.addMenuGroup}/>
+                  removeMealFromMenuGroup={this.props.removeMealFromMenuGroup} addMenuGroup={this.props.addMenuGroup}
+                  removeMenuGroup={this.props.removeMenuGroup}/>
         );
     }
 }
@@ -33,6 +40,7 @@ export default connect(mapStateToProps, {
     addMealToMenu,
     getMenuGroups,
     removeMealFromMenuGroup,
-    addMenuGroup
+    addMenuGroup,
+    removeMenuGroup
 })(MenuContainer);
 

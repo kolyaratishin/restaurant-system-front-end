@@ -39,3 +39,7 @@
 .group_name {
     text-align: center;
 }
+
+.row_id {
+    display: none;
+}
