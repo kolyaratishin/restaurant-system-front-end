@@ -29,7 +29,6 @@ const menuReducer = (state = initialState, action) => {
                     price: actionData.price,
                 });
             }
-            debugger
             return {...state, menuGroups: [...newMenuGroups]}
         }
         case SET_MENU_GROUPS:
@@ -54,10 +53,7 @@ const addMeal = (meal) => {
 }
 export const getMenuGroups = (restaurantId) => {
     return (dispatch) => {
-        menuApi.getAll(restaurantId)
-            .then(data => {
-                dispatch(setMenuGroups(data.data));
-            })
+        getAllMenuGroups(restaurantId, dispatch);
     }
 }
 
@@ -70,12 +66,31 @@ export const importMenuFromFile = (formData, restaurantId) => {
     return (dispatch) => {
         importApi.import(formData)
             .then(() => {
-                menuApi.getAll(restaurantId)
-                    .then(data => {
-                        dispatch(setMenuGroups(data));
+                getAllMenuGroups(restaurantId, dispatch);
+            })
+    }
+}
+
+export const removeMealFromMenuGroup = (menuGroupId, mealId) => {
+    return (dispatch) => {
+        menuApi.getMealGroupById(menuGroupId)
+            .then(mealGroup => {
+                return mealGroup.data.restaurantId;
+            })
+            .then(restaurantId => {
+                menuApi.removeMealFromMenuGroup(menuGroupId, mealId)
+                    .then(() => {
+                        getAllMenuGroups(restaurantId, dispatch);
                     })
             })
     }
+}
+
+const getAllMenuGroups = (restaurantId, dispatch) => {
+    menuApi.getAll(restaurantId)
+        .then(data => {
+            dispatch(setMenuGroups(data.data));
+        })
 }
 
 export default menuReducer;

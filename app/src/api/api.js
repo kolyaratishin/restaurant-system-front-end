@@ -17,6 +17,12 @@ export const menuApi = {
     },
     save(meal){
         return axiosInstance.post(`meal`, meal);
+    },
+    removeMealFromMenuGroup(menuGroupId, mealId){
+        return axiosInstance.delete(`group/${menuGroupId}/meal/${mealId}`);
+    },
+    getMealGroupById(menuGroupId){
+        return axiosInstance.get(`group/${menuGroupId}`);
     }
 }
 
