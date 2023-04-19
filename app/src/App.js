@@ -6,6 +6,7 @@ import MenuContainer from "./components/Menu/MenuContainer";
 import TablesContainer from "./components/Tables/TablesContainer";
 import ReceiptContainer from "./components/Receipt/ReceiptContainer";
 import ImportExport from "./components/ImportExport/ImportExport";
+import LoginContainer from "./components/Auth/Login/LoginContainer";
 
 function App() {
     return (
@@ -23,6 +24,8 @@ function App() {
                            element={<Statistics/>}/>
                     <Route path="/import-export"
                            element={<ImportExport/>}/>
+                    <Route path="/login"
+                           element={<LoginContainer/>}/>
                 </Routes>
             </div>
         </BrowserRouter>
