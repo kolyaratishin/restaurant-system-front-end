@@ -26,7 +26,7 @@ function mapStateToProps(state) {
     return {
         currentReceipt: state.receiptPage.currentReceipt,
         menuGroups: state.menuPage.menuGroups,
-        restaurantId: state.restaurant.restaurantId
+        restaurantId: state.user.currentUser.restaurantId
     }
 }
 export default compose(

@@ -19,7 +19,7 @@ class TablesContainer extends Component {
 function mapStateToProps(state) {
     return {
         tables: state.tablesPage.tables,
-        restaurantId: state.restaurant.restaurantId
+        restaurantId: state.user.currentUser.restaurantId
     }
 }
 

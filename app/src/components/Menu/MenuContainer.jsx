@@ -32,7 +32,7 @@ class MenuContainer extends Component {
 function mapStateToProps(state) {
     return {
         menuGroups: state.menuPage.menuGroups,
-        restaurantId: state.restaurant.restaurantId
+        restaurantId: state.user.currentUser.restaurantId
     }
 }
 

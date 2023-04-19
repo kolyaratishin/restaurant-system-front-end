@@ -4,14 +4,12 @@ import tableReducer from "./table-reducer";
 import receiptReducer from "./receipt-reducer";
 import thunk from "redux-thunk";
 import {reducer as formReducer} from "redux-form";
-import restaurantReducer from "./restaurant-reducer";
 import userReducer from "./user-reducer";
 
 let reducers = combineReducers({
     menuPage: menuReducer,
     tablesPage: tableReducer,
     receiptPage: receiptReducer,
-    restaurant: restaurantReducer,
     user: userReducer,
     form: formReducer
 })
