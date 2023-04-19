@@ -18,6 +18,9 @@ function Header() {
             <div className={classes.item}>
                 <NavLink to="/login" className={isActive}>Логін</NavLink>
             </div>
+            <div className={classes.item}>
+                <NavLink to="/registration" className={isActive}>Реєстрація</NavLink>
+            </div>
         </header>
     );
 }

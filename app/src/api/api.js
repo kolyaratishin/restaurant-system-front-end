@@ -131,5 +131,11 @@ export const userApi = {
                 authorization: "Basic " + localStorage.getItem("userData"),
             }
         });
-    }
+    },
+    register(username, password) {
+        return axiosInstance.post(`user/registration`, {
+            username,
+            password
+        });
+    },
 }

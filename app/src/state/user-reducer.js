@@ -32,6 +32,14 @@ export const login = (username, password) => {
     };
 }
 
+export const register = (username, password) => {
+    return () => {
+        userApi.register(username, password)
+            .then(() => {
+            });
+    };
+}
+
 export const setCurrentUser = (user) => {
     return {type: SET_CURRENT_USER, user};
 }
