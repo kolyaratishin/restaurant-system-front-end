@@ -1,22 +1,24 @@
 import classes from "../../Menu/AddGroupForm/AddGroupForm.module.css";
 import {Field, reduxForm} from "redux-form";
+import {withRouter} from "../../../hoc/withRouter";
 
 function Login(props) {
 
-    const onLoginSubmit = (values) => {
-        props.login(values.username, values.password);
-    }
-
     return (
        <div>
-           <LoginFormRedux onSubmit={onLoginSubmit}/>
+           <LoginFormRedux login={props.login}/>
        </div>
     );
 }
 
 function LoginForm(props) {
+    const onLoginSubmit = (values) => {
+        props.login(values.username, values.password);
+        props.navigate("/tables");
+    }
+
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={props.handleSubmit(onLoginSubmit)}>
             <div>
                 <p className={classes.input_name}>Логін</p>
                 <Field component={"input"} name="username" placeholder="Введіть логін" type={"text"}/>
@@ -28,6 +30,8 @@ function LoginForm(props) {
     );
 }
 
-const LoginFormRedux = reduxForm({form: "loginForm"})(LoginForm);
+const LoginFormWithRouter = withRouter(LoginForm);
+
+const LoginFormRedux = reduxForm({form: "loginForm"})(LoginFormWithRouter);
 
 export default Login;
