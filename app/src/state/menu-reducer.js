@@ -1,4 +1,5 @@
 import {importApi, menuApi} from "../api/api";
+import { saveAs } from 'file-saver';
 
 const ADD_MEAL_TO_MENU = "ADD_MEAL_TO_MENU"
 const SET_MENU_GROUPS = "SET_MENU_GROUPS"
@@ -73,6 +74,16 @@ export const importMenuFromFile = (formData, restaurantId) => {
         importApi.import(formData, restaurantId)
             .then(() => {
                 getAllMenuGroups(restaurantId, dispatch);
+            })
+    }
+}
+
+export const exportMenuToFile = (restaurantId) => {
+    return () => {
+        importApi.export(restaurantId)
+            .then((response) => {
+                const file = new Blob([response.data], { type: 'application/octet-stream' });
+                saveAs(file, 'export.csv');
             })
     }
 }

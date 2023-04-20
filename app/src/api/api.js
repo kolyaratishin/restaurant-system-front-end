@@ -14,6 +14,15 @@ export const importApi = {
                 }
             });
     },
+    export(restaurantId) {
+        return axiosInstance.get( `export/csv/${restaurantId}`,
+            {
+                responseType: 'blob',
+                headers: {
+                    authorization: "Basic " + localStorage.getItem("userData"),
+                }
+            });
+    },
 }
 
 export const menuApi = {

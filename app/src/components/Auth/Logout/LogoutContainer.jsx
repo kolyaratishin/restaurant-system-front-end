@@ -6,7 +6,6 @@ import {withRouter} from "../../../hoc/withRouter";
 
 class LogoutContainer extends Component {
     render() {
-        debugger;
         return (
             <Logout logout={this.props.logout} navigate={this.props.navigate}/>
         );
