@@ -1,4 +1,4 @@
-import classes from "../../Menu/AddGroupForm/AddGroupForm.module.css";
+import classes from "./Registration.module.css"
 import {Field, reduxForm} from "redux-form";
 import {withRouter} from "../../../hoc/withRouter";
 
@@ -18,15 +18,25 @@ function RegistrationForm(props) {
     }
 
     return (
-        <form onSubmit={props.handleSubmit(onLoginSubmit)}>
-            <div>
-                <p className={classes.input_name}>Логін</p>
-                <Field component={"input"} name="username" placeholder="Введіть логін" type={"text"}/>
-                <p className={classes.input_name}>Пароль</p>
-                <Field component={"input"} name="password" placeholder="Введіть пароль" type={"password"}/>
-            </div>
-            <button className={classes.add_button}>Зареєструватися</button>
-        </form>
+        <div className={classes.form_container}>
+            <form className={classes.login_form} onSubmit={props.handleSubmit(onLoginSubmit)}>
+                <h2>Реєстрація</h2>
+                <div>
+                    <div className={classes.form_group}>
+                        <p className={classes.input_name}>Логін</p>
+                        <Field component={"input"} name="username" placeholder="Введіть логін" type={"text"}/>
+                    </div>
+                    <div className={classes.form_group}>
+                        <p className={classes.input_name}>Пароль</p>
+                        <Field component={"input"} name="password" placeholder="Введіть пароль" type={"password"}/>
+                    </div>
+                </div>
+                <div className={classes.form_group}>
+                    <button className={classes.registration_button}>Зареєструватися</button>
+                </div>
+            </form>
+        </div>
+
     );
 }
 
