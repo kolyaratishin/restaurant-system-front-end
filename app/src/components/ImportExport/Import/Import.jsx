@@ -1,11 +1,11 @@
 import classes from "./Import.module.css";
 
-function Import() {
+function Import(props) {
     const handleFileChange = (event) => {
         const file = event.target.files[0]; // Отримуємо перший вибраний файл
         const formData = new FormData(); // Створюємо об'єкт FormData для відправки файлу на сервер
         formData.append('file', file);
-        debugger
+        props.importMenuFromFile(formData, props.restaurantId);
     }
 
     return (

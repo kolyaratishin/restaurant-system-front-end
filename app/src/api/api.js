@@ -6,8 +6,13 @@ const axiosInstance = axios.create({
 });
 
 export const importApi = {
-    import(formData) {
-        return axiosInstance.post(`import`, {formData});
+    import(formData, restaurantId) {
+        return axiosInstance.post(`import/restaurant/${restaurantId}`, formData,
+            {
+                headers: {
+                    authorization: "Basic " + localStorage.getItem("userData"),
+                }
+            });
     },
 }
 

@@ -70,7 +70,7 @@ const setMenuGroups = (menuGroups) => {
 
 export const importMenuFromFile = (formData, restaurantId) => {
     return (dispatch) => {
-        importApi.import(formData)
+        importApi.import(formData, restaurantId)
             .then(() => {
                 getAllMenuGroups(restaurantId, dispatch);
             })
