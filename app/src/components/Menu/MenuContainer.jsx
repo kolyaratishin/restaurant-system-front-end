@@ -23,7 +23,7 @@ class MenuContainer extends Component {
         return (
             <Menu menuGroups={this.props.menuGroups} addMealToMenu={this.props.addMealToMenu} restaurantId={this.props.restaurantId}
                   removeMealFromMenuGroup={this.props.removeMealFromMenuGroup} addMenuGroup={this.props.addMenuGroup}
-                  removeMenuGroup={this.props.removeMenuGroup}/>
+                  removeMenuGroup={this.props.removeMenuGroup} currentUser={this.props.currentUser}/>
         );
     }
 }
@@ -32,7 +32,8 @@ class MenuContainer extends Component {
 function mapStateToProps(state) {
     return {
         menuGroups: state.menuPage.menuGroups,
-        restaurantId: state.user.currentUser.restaurantId
+        restaurantId: state.user.currentUser.restaurantId,
+        currentUser: state.user.currentUser
     }
 }
 

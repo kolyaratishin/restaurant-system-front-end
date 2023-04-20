@@ -6,7 +6,8 @@ let initialState = {
     currentUser: {
         username: "",
         role: "",
-        restaurantId: 0
+        restaurantId: 0,
+        isAuth: false
     }
 }
 
@@ -26,7 +27,9 @@ export const login = (username, password) => {
             .then(() => {
                 userApi.getUserByUsername(username)
                     .then(data => {
-                        dispatch(setCurrentUser(data.data));
+                        const response = data.data;
+                        response.isAuth = true;
+                        dispatch(setCurrentUser(response));
                     });
             });
     };

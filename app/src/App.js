@@ -1,6 +1,5 @@
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Header from "./components/Header/Header";
 import Statistics from "./components/Statistics/Statistics";
 import MenuContainer from "./components/Menu/MenuContainer";
 import TablesContainer from "./components/Tables/TablesContainer";
@@ -8,11 +7,12 @@ import ReceiptContainer from "./components/Receipt/ReceiptContainer";
 import ImportExport from "./components/ImportExport/ImportExport";
 import LoginContainer from "./components/Auth/Login/LoginContainer";
 import RegistrationContainer from "./components/Auth/Registration/RegistrationContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 function App() {
     return (
         <BrowserRouter>
-            <Header/>
+            <HeaderContainer/>
             <div className="app-wrapper-content">
                 <Routes>
                     <Route path="/tables"

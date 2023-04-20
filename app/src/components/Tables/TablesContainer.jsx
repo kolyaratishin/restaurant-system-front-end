@@ -10,7 +10,8 @@ class TablesContainer extends Component {
 
     render() {
         return (
-            <Tables tables={this.props.tables} restaurantId={this.props.restaurantId} addTable={this.props.addTable}/>
+            <Tables tables={this.props.tables} restaurantId={this.props.restaurantId} addTable={this.props.addTable}
+            currentUser={this.props.currentUser}/>
         );
     }
 }
@@ -19,7 +20,8 @@ class TablesContainer extends Component {
 function mapStateToProps(state) {
     return {
         tables: state.tablesPage.tables,
-        restaurantId: state.user.currentUser.restaurantId
+        restaurantId: state.user.currentUser.restaurantId,
+        currentUser: state.user.currentUser
     }
 }
 

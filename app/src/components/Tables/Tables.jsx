@@ -1,9 +1,13 @@
 import Table from "./Table/Table";
-import {NavLink} from "react-router-dom";
+import {Navigate, NavLink} from "react-router-dom";
 import TableForm from "./Table/TableForm/TableForm";
 import classes from "./Tables.module.css";
 
 function Tables(props) {
+    if(!props.currentUser.isAuth){
+        return <Navigate to={"/login"}/>
+    }
+
     let tables = props.tables;
 
     const addTable = (values) => {

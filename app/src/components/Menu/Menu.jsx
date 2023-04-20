@@ -2,8 +2,12 @@ import classes from "./Menu.module.css";
 import MenuItem from "./MenuItem/MenuItem";
 import MenuForm from "./MenuForm/MenuForm";
 import AddGroupForm from "./AddGroupForm/AddGroupForm";
+import {Navigate} from "react-router-dom";
 
 function Menu(props) {
+    if(!props.currentUser.isAuth){
+        return <Navigate to={"/login"}/>
+    }
 
     const addMealToMenu = (values) => {
         props.addMealToMenu(values);

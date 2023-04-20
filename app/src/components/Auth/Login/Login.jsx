@@ -14,7 +14,7 @@ function Login(props) {
 function LoginForm(props) {
     const onLoginSubmit = (values) => {
         props.login(values.username, values.password);
-        props.navigate("/tables");
+        props.navigate("/");
     }
 
     return (
