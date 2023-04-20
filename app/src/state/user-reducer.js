@@ -2,13 +2,14 @@ import {userApi} from "../api/api";
 
 const SET_CURRENT_USER = "SET_CURRENT_USER"
 
-let initialState = {
-    currentUser: {
-        username: "",
+const emptyUser = {
+    username: "",
         role: "",
         restaurantId: 0,
         isAuth: false
-    }
+}
+let initialState = {
+    currentUser: emptyUser
 }
 
 const userReducer = (state = initialState, action) => {
@@ -45,6 +46,12 @@ export const register = (username, password) => {
 
 export const setCurrentUser = (user) => {
     return {type: SET_CURRENT_USER, user};
+}
+
+export const logout = () => {
+    return (dispatch) => {
+        dispatch(setCurrentUser(emptyUser));
+    };
 }
 
 export default userReducer;

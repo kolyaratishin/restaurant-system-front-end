@@ -1,5 +1,6 @@
 import classes from "./Header.module.css";
 import {NavLink} from "react-router-dom";
+import LogoutContainer from "../Auth/Logout/LogoutContainer";
 
 function Header(props) {
     const currentUser = props.currentUser;
@@ -29,12 +30,19 @@ function Header(props) {
                 )}
             </div>
             <div className={classes.auth_links}>
-                <div className={classes.item}>
-                    <NavLink to="/login" className={isActive}>Логін</NavLink>
-                </div>
-                <div className={classes.item}>
-                    <NavLink to="/registration" className={isActive}>Реєстрація</NavLink>
-                </div>
+                {!isAuth && (
+                    <div className={classes.item}>
+                        <NavLink to="/login" className={isActive}>Логін</NavLink>
+                    </div>
+                )}
+                {!isAuth && (
+                    <div className={classes.item}>
+                        <NavLink to="/registration" className={isActive}>Реєстрація</NavLink>
+                    </div>
+                )}
+                {isAuth && (
+                    <LogoutContainer/>
+                )}
             </div>
         </header>
     );
