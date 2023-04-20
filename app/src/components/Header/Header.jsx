@@ -6,31 +6,35 @@ function Header(props) {
     const isAuth = currentUser.isAuth;
     return (
         <header className={classes.header}>
-            {isAuth && (
-                <div className={classes.item}>
-                    <NavLink to="/tables" className={isActive}>Столи</NavLink>
-                </div>
-            )}
-            {isAuth && (
-                <div className={classes.item}>
-                    <NavLink to="/menu" className={isActive}>Меню</NavLink>
-                </div>
-            )}
-            {isAuth && (
-                <div className={classes.item}>
-                    <NavLink to="/statistics" className={isActive}>Статистика</NavLink>
-                </div>
-            )}
-            {isAuth && (
-                <div className={classes.item}>
-                    <NavLink to="/import-export" className={isActive}>Імпорт/Експорт</NavLink>
-                </div>
-            )}
-            <div className={classes.item}>
-                <NavLink to="/login" className={isActive}>Логін</NavLink>
+            <div className={classes.content_links}>
+                {isAuth && (
+                    <div className={classes.item}>
+                        <NavLink to="/tables" className={isActive}>Столи</NavLink>
+                    </div>
+                )}
+                {isAuth && (
+                    <div className={classes.item}>
+                        <NavLink to="/menu" className={isActive}>Меню</NavLink>
+                    </div>
+                )}
+                {isAuth && (
+                    <div className={classes.item}>
+                        <NavLink to="/statistics" className={isActive}>Статистика</NavLink>
+                    </div>
+                )}
+                {isAuth && (
+                    <div className={classes.item}>
+                        <NavLink to="/import-export" className={isActive}>Імпорт/Експорт</NavLink>
+                    </div>
+                )}
             </div>
-            <div className={classes.item}>
-                <NavLink to="/registration" className={isActive}>Реєстрація</NavLink>
+            <div className={classes.auth_links}>
+                <div className={classes.item}>
+                    <NavLink to="/login" className={isActive}>Логін</NavLink>
+                </div>
+                <div className={classes.item}>
+                    <NavLink to="/registration" className={isActive}>Реєстрація</NavLink>
+                </div>
             </div>
         </header>
     );

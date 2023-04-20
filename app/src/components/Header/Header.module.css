@@ -1,9 +1,11 @@
 .header {
     background-color: blue;
     height: 50px;
+    display: flex;
+    justify-content: space-between;
 }
 .header div {
-    display: inline-block;
+    display: inline-flex;
     margin-right: 30px;
 }
 
@@ -14,4 +16,12 @@
 
 .item a.active{
     color: gold;
+}
+
+.content_links {
+    width: 90%;
+}
+
+.auth_links{
+    width: 10%;
 }
