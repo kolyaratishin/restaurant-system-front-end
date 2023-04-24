@@ -153,3 +153,13 @@ export const userApi = {
         });
     },
 }
+
+export const statisticsApi = {
+    getAllMealsInOrder(restaurantId) {
+        return axiosInstance.get(`statistics/meals/count/order?restaurantId=${restaurantId}`,{
+            headers: {
+                authorization: "Basic " + localStorage.getItem("userData"),
+            }
+        });
+    },
+}

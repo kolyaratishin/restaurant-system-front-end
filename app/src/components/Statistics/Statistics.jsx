@@ -1,7 +1,9 @@
+import MealsCountInOrderContainer from "./MealsCountInOrder/MealsCountInOrderContainer";
+
 function Statistics() {
     return (
         <div>
-            Statistics
+            <MealsCountInOrderContainer/>
         </div>
     );
 }
