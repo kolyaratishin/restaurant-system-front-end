@@ -162,4 +162,11 @@ export const statisticsApi = {
             }
         });
     },
+    getAllMealsGroupInOrder(restaurantId) {
+        return axiosInstance.get(`statistics/mealsGroup/count/order?restaurantId=${restaurantId}`,{
+            headers: {
+                authorization: "Basic " + localStorage.getItem("userData"),
+            }
+        });
+    },
 }
