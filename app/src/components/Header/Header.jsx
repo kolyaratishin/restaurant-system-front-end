@@ -5,6 +5,7 @@ import LogoutContainer from "../Auth/Logout/LogoutContainer";
 function Header(props) {
     const currentUser = props.currentUser;
     const isAuth = currentUser.isAuth;
+    const isAdmin = currentUser.role === "ADMIN";
     return (
         <header className={classes.header}>
             <div className={classes.content_links}>
@@ -13,19 +14,24 @@ function Header(props) {
                         <NavLink to="/tables" className={isActive}>Столи</NavLink>
                     </div>
                 )}
-                {isAuth && (
+                {isAuth && isAdmin && (
                     <div className={classes.item}>
                         <NavLink to="/menu" className={isActive}>Меню</NavLink>
                     </div>
                 )}
-                {isAuth && (
+                {isAuth && isAdmin && (
                     <div className={classes.item}>
                         <NavLink to="/statistics" className={isActive}>Статистика</NavLink>
                     </div>
                 )}
-                {isAuth && (
+                {isAuth && isAdmin && (
                     <div className={classes.item}>
                         <NavLink to="/import-export" className={isActive}>Імпорт/Експорт</NavLink>
+                    </div>
+                )}
+                {isAuth && isAdmin && (
+                    <div className={classes.item}>
+                        <NavLink to="/employees" className={isActive}>Працівники</NavLink>
                     </div>
                 )}
             </div>

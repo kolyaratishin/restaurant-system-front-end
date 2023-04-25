@@ -15,7 +15,7 @@ export const importApi = {
             });
     },
     export(restaurantId) {
-        return axiosInstance.get( `export/csv/${restaurantId}`,
+        return axiosInstance.get(`export/csv/${restaurantId}`,
             {
                 responseType: 'blob',
                 headers: {
@@ -119,7 +119,7 @@ export const receiptApi = {
         });
     },
     countReceipt(receiptId) {
-        return axiosInstance.post(`receipt/count/${receiptId}`,{}, {
+        return axiosInstance.post(`receipt/count/${receiptId}`, {}, {
             headers: {
                 authorization: "Basic " + localStorage.getItem("userData"),
             }
@@ -140,7 +140,7 @@ export const userApi = {
         });
     },
     getUserByUsername(username) {
-        return axiosInstance.get(`user?username=${username}`,{
+        return axiosInstance.get(`user?username=${username}`, {
             headers: {
                 authorization: "Basic " + localStorage.getItem("userData"),
             }
@@ -156,14 +156,38 @@ export const userApi = {
 
 export const statisticsApi = {
     getAllMealsInOrder(restaurantId) {
-        return axiosInstance.get(`statistics/meals/count/order?restaurantId=${restaurantId}`,{
+        return axiosInstance.get(`statistics/meals/count/order?restaurantId=${restaurantId}`, {
             headers: {
                 authorization: "Basic " + localStorage.getItem("userData"),
             }
         });
     },
     getAllMealsGroupInOrder(restaurantId) {
-        return axiosInstance.get(`statistics/mealsGroup/count/order?restaurantId=${restaurantId}`,{
+        return axiosInstance.get(`statistics/mealsGroup/count/order?restaurantId=${restaurantId}`, {
+            headers: {
+                authorization: "Basic " + localStorage.getItem("userData"),
+            }
+        });
+    },
+}
+
+export const employeeApi = {
+    getAllEmployees(adminUsername) {
+        return axiosInstance.get(`user/employee?username=${adminUsername}`, {
+            headers: {
+                authorization: "Basic " + localStorage.getItem("userData"),
+            }
+        });
+    },
+    addEmployee(employee, adminUsername) {
+        return axiosInstance.post(`user/employee?username=${adminUsername}`, employee, {
+            headers: {
+                authorization: "Basic " + localStorage.getItem("userData"),
+            }
+        });
+    },
+    removeUser(id) {
+        return axiosInstance.delete(`user/${id}`, {
             headers: {
                 authorization: "Basic " + localStorage.getItem("userData"),
             }

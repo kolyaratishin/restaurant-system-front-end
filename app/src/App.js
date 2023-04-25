@@ -8,6 +8,7 @@ import ImportExport from "./components/ImportExport/ImportExport";
 import LoginContainer from "./components/Auth/Login/LoginContainer";
 import RegistrationContainer from "./components/Auth/Registration/RegistrationContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import EmployeesContainer from "./components/Employees/EmployeesContainer";
 
 function App() {
     return (
@@ -25,6 +26,8 @@ function App() {
                            element={<Statistics/>}/>
                     <Route path="/import-export"
                            element={<ImportExport/>}/>
+                    <Route path="/employees"
+                           element={<EmployeesContainer/>}/>
                     <Route path="/login"
                            element={<LoginContainer/>}/>
                     <Route path="/registration"

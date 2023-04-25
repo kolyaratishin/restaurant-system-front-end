@@ -1,0 +1,14 @@
+.input{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.add_button {
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    border-radius: 10px;
+    border: 1px solid blue;
+    color: white;
+    background-color: blue;
+}

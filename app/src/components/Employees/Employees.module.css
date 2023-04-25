@@ -1,0 +1,40 @@
+.employee_content {
+    display: flex;
+    margin-top: 10px;
+}
+
+.employees {
+    flex: 0 0 700px;
+    margin-right: 100px;
+}
+
+.employee_table {
+    text-align: right;
+    position: relative;
+    border-collapse: collapse;
+}
+
+.employee_table td, th {
+    border: 1px solid #999;
+    padding: 5px;
+}
+
+.employee_form{
+    flex: 1 1 auto;
+    margin-right: 30px;
+    border: 2px solid blue;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    height: 100%;
+}
+
+.employee_form_caption {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.row_id {
+    display: none;
+}
