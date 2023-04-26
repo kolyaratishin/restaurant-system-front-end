@@ -91,6 +91,20 @@ export const tableApi = {
             }
         });
     },
+    getTableById(id) {
+        return axiosInstance.get(`table/${id}`, {
+            headers: {
+                authorization: "Basic " + localStorage.getItem("userData"),
+            }
+        });
+    },
+    changeStatus(status,id) {
+        return axiosInstance.post(`table/status/${id}?status=${status}`, {},{
+            headers: {
+                authorization: "Basic " + localStorage.getItem("userData"),
+            }
+        });
+    },
 }
 
 export const receiptApi = {

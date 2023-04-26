@@ -1,6 +1,7 @@
 import classes from "./Receipt.module.css";
 import ReceiptItem from "./ReceiptItem/ReceiptItem";
 import ReceiptMenu from "./ReceiptMenu/ReceiptMenu";
+import TableStatus from "./TableStatus/TableStatus";
 
 function Receipt(props) {
     let meals = []
@@ -19,6 +20,7 @@ function Receipt(props) {
 
     return (
         <div className={classes.receipt_content}>
+            <TableStatus status={props.currentTable.status} setStatus={props.setStatus} tableId={props.currentReceipt.id}/>
             <div className={classes.receipt}>
                 <table className={classes.receipt_table}>
                     <caption>Замовлення</caption>
