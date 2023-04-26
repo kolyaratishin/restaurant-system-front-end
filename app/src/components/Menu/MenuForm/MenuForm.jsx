@@ -2,6 +2,7 @@ import {Field, reduxForm} from "redux-form";
 import classes from "./MenuForm.module.css";
 import {requiredField} from "../../../utils/validators/validators"
 import {Textarea} from "../../common/FormsControls/FormControls";
+import AddButton from "../../common/Buttons/AddButton/AddButton";
 
 function MenuForm(props) {
     const menuGroups = props.menuGroups;
@@ -22,7 +23,7 @@ function MenuForm(props) {
                     {menuGroups.map(group => <option value={group.id}>{group.name}</option>)}
                 </Field>
             </div>
-            <button className={classes.add_button}>Додати</button>
+            <AddButton/>
         </form>
     );
 }

@@ -1,0 +1,14 @@
+.remove_button{
+    cursor: pointer;
+    background-color: red;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    height: 22px;
+    width: 35px;
+    font-weight: bolder;
+}
+
+.remove_button:hover{
+    background-color: rgba(255,18,0,0.7);
+}

@@ -5,3 +5,12 @@
 .row_id {
     display: none;
 }
+
+.row .add_button {
+    width: 3%;
+    border: none;
+}
+
+.remove_button button{
+    cursor: pointer;
+}

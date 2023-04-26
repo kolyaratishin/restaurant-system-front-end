@@ -3,6 +3,7 @@ import MenuItem from "./MenuItem/MenuItem";
 import MenuForm from "./MenuForm/MenuForm";
 import AddGroupForm from "./AddGroupForm/AddGroupForm";
 import {Navigate} from "react-router-dom";
+import RemoveGroupButton from "../common/Buttons/RemoveButton/RemoveGroupButton/RemoveGroupButton";
 
 function Menu(props) {
     if(!props.currentUser.isAuth){
@@ -28,7 +29,7 @@ function Menu(props) {
     let menuGroups = props.menuGroups;
     return (
         <div className={classes.menu_content}>
-            <div>
+            <div className={classes.menu}>
                 <table className={classes.menu_table}>
                     <caption>Меню</caption>
                     <tr>
@@ -46,8 +47,8 @@ function Menu(props) {
                                     <th className={classes.group_name} colSpan="3">
                                         {item.name}
                                     </th>
-                                    <td>
-                                        <button onClick={removeMenuGroup}>-</button>
+                                    <td className={classes.remove_button}>
+                                        <RemoveGroupButton onClick={removeMenuGroup}/>
                                     </td>
                                 </tr>
                                 {item.menu.map(menuItem => <MenuItem id={menuItem.id} name={menuItem.name} price={menuItem.price}

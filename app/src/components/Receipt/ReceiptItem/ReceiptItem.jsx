@@ -1,4 +1,5 @@
 import classes from "./ReceiptItem.module.css";
+import RemoveItemButton from "../../common/Buttons/RemoveButton/RemoveItemButton/RemoveItemButton";
 
 function ReceiptItem(props) {
     const handleClick = (event) => {
@@ -19,7 +20,7 @@ function ReceiptItem(props) {
             <td>{props.name}</td>
             <td>{props.amount}</td>
             <td>{props.price}</td>
-            <td><button onClick={handleClick}>-</button></td>
+            <td className={classes.remove_button}><RemoveItemButton onClick={handleClick}/></td>
         </tr>
     );
 }

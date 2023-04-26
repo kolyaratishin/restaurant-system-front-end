@@ -1,0 +1,14 @@
+.add_button{
+    cursor: pointer;
+    background-color: green;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    height: 22px;
+    width: 35px;
+    font-weight: bolder;
+}
+
+.add_button:hover{
+    background-color: rgba(27,182,0,0.74);
+}

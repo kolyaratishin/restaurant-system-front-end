@@ -2,6 +2,7 @@ import {Field, reduxForm} from "redux-form";
 import classes from "./TableForm.module.css";
 import {requiredField} from "../../../../utils/validators/validators"
 import {Textarea} from "../../../common/FormsControls/FormControls";
+import AddButton from "../../../common/Buttons/AddButton/AddButton";
 
 function TableForm(props) {
     return (
@@ -11,7 +12,7 @@ function TableForm(props) {
                 <Field component={Textarea} name="tableName" placeholder="Введіть назву стола"
                        validate={[requiredField]}/>
             </div>
-            <button className={classes.add_button}>Додати</button>
+            <AddButton/>
         </form>
     );
 }

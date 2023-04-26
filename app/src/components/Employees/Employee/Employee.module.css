@@ -5,3 +5,8 @@
 .row_id {
     display: none;
 }
+
+.row .remove_button{
+    width: 3%;
+    border: none;
+}

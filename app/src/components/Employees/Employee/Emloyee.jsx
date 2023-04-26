@@ -1,4 +1,5 @@
-import classes from "../../Menu/MenuItem/MenuItem.module.css";
+import classes from "./Employee.module.css";
+import RemoveItemButton from "../../common/Buttons/RemoveButton/RemoveItemButton/RemoveItemButton";
 
 const Employee = (props) => {
 
@@ -16,8 +17,8 @@ const Employee = (props) => {
             <td>{props.username}</td>
             <td>{props.password}</td>
             <td>{props.fullName}</td>
-            <td>
-                <button onClick={removeEmployee}>-</button>
+            <td className={classes.remove_button}>
+                <RemoveItemButton onClick={removeEmployee}/>
             </td>
         </tr>
     )

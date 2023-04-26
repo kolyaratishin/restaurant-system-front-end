@@ -1,0 +1,14 @@
+.add_button {
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    border-radius: 10px;
+    border: 0 solid blue;
+    color: white;
+    background-color: blue;
+    cursor: pointer;
+}
+
+.add_button:hover{
+    background-color: #357ae8;
+}

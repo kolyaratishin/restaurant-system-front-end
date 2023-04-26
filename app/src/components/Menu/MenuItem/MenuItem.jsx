@@ -1,4 +1,5 @@
 import classes from "./MenuItem.module.css";
+import RemoveItemButton from "../../common/Buttons/RemoveButton/RemoveItemButton/RemoveItemButton";
 function MenuItem(props) {
 
     const handleClick = (event) => {
@@ -15,8 +16,8 @@ function MenuItem(props) {
             <td>{props.name}</td>
             <td>{props.price}</td>
             <td>{props.size}</td>
-            <td className={classes.change_button}>
-                <button onClick={handleClick}>-</button>
+            <td className={classes.remove_button}>
+                <RemoveItemButton onClick={handleClick}/>
             </td>
         </tr>
     );

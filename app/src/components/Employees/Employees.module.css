@@ -12,6 +12,7 @@
     text-align: right;
     position: relative;
     border-collapse: collapse;
+    width: 80%;
 }
 
 .employee_table td, th {

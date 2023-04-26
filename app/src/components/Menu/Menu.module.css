@@ -2,13 +2,20 @@
     display: flex;
     margin-top: 10px;
 }
+.menu{
+    flex: 0 0 500px;
+    margin-right: 100px;
+}
 
 .menu_table {
     text-align: right;
     position: relative;
     border-collapse: collapse;
-    flex: 0 0 600px;
-    margin-right: 100px;
+    width: 100%;
+}
+.menu_table .remove_button{
+    width: 3%;
+    border: none;
 }
 
 .menu_table td, th {
@@ -26,9 +33,6 @@
     height: 100%;
 }
 
-.import_export{
-    flex: 1 1 auto;
-}
 
 .form_caption {
     text-align: center;

@@ -1,5 +1,6 @@
 import classes from "./EmployeeAddForm.module.css";
 import {Field, reduxForm} from "redux-form";
+import AddButton from "../../common/Buttons/AddButton/AddButton";
 
 function EmployeeAddForm(props) {
     return (
@@ -12,7 +13,7 @@ function EmployeeAddForm(props) {
                 <p className={classes.input}>Повне ім'я</p>
                 <Field component={"input"} name="fullName" placeholder="Введіть повне ім'я працівника"/>
             </div>
-            <button className={classes.add_button}>Додати</button>
+            <AddButton/>
         </form>
     );
 }

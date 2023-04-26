@@ -1,4 +1,5 @@
 import classes from "./ReceiptMenuItem.module.css";
+import AddMealButton from "../../../common/Buttons/AddMealButton/AddMealButton";
 function ReceiptMenuItem(props) {
 
     const handleClick = (event) => {
@@ -19,7 +20,7 @@ function ReceiptMenuItem(props) {
             <td>{props.name}</td>
             <td>{props.price}</td>
             <td>{props.size}</td>
-            <td><button onClick={handleClick}>+</button></td>
+            <td className={classes.add_button}><AddMealButton onClick={handleClick}/></td>
         </tr>
     );
 }

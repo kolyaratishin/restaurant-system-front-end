@@ -2,6 +2,7 @@ import {Field, reduxForm} from "redux-form";
 import classes from "./AddGroupForm.module.css";
 import {requiredField} from "../../../utils/validators/validators"
 import {Textarea} from "../../common/FormsControls/FormControls";
+import AddButton from "../../common/Buttons/AddButton/AddButton";
 
 function AddGroupForm(props) {
     return (
@@ -11,7 +12,7 @@ function AddGroupForm(props) {
                 <Field component={Textarea} name="groupName" placeholder="Введіть ім'я групи"
                        validate={[requiredField]}/>
             </div>
-            <button className={classes.add_button}>Додати</button>
+            <AddButton/>
         </form>
     );
 }

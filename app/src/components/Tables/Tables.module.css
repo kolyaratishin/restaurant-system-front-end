@@ -3,7 +3,7 @@
 }
 
 .tables{
-    flex: 0 0 600px;
+    flex: 0 0 800px;
     margin-right: 100px;
 }
 
@@ -20,4 +20,5 @@
 .table_form_caption {
     text-align: center;
     margin: 2px 3px 4px 1px;
+    font-weight: bold;
 }
