@@ -2,6 +2,7 @@ import {Component} from "react";
 import {connect} from "react-redux";
 import {addMealToReceipt} from "../../../state/receipt-reducer";
 import ReceiptMenu from "./ReceiptMenu";
+import {getMenuGroups} from "../../../state/menu-reducer";
 
 class ReceiptMenuContainer extends Component {
 
@@ -11,6 +12,7 @@ class ReceiptMenuContainer extends Component {
     }
 
     componentDidMount() {
+        this.props.getMenuGroups();
         this.setState({
             searchValue: "",
             searchedMeals: this.props.menuGroups
@@ -21,7 +23,7 @@ class ReceiptMenuContainer extends Component {
         if (prevState.searchValue !== this.state.searchValue) {
             this.setState({
                 searchValue: this.state.searchValue,
-                searchedMeals:this.state.searchedMeals
+                searchedMeals: this.state.searchedMeals
             })
         }
     }
@@ -40,16 +42,17 @@ class ReceiptMenuContainer extends Component {
             .filter(menuGroup => menuGroup.menu.length > 0);
     }
 
-    findMealsInMealGroup(menuGroup, searchValue){
+    findMealsInMealGroup(menuGroup, searchValue) {
         const newMenuGroup = {...menuGroup};
         newMenuGroup.menu = [...newMenuGroup.menu.filter(meal => meal.name.startsWith(searchValue))]
         return newMenuGroup;
     }
 
     render() {
+        const menuGroups = this.state.searchedMeals.length > 0 ? this.state.searchedMeals : this.props.menuGroups
         return (
             <ReceiptMenu currentReceipt={this.props.currentReceipt}
-                         menuGroups={this.state.searchedMeals}
+                         menuGroups={menuGroups}
                          addMealToReceipt={this.props.addMealToReceipt}
                          onSearchChange={this.onSearchChange}/>
         );
@@ -68,5 +71,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps,
     {
         addMealToReceipt,
+        getMenuGroups
     })
 (ReceiptMenuContainer);

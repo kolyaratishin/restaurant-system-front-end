@@ -38,7 +38,6 @@ class MenuContainer extends Component {
     onSearchChange = (e) => {
         const searchValue = e.currentTarget.value;
         const searchedMeals = this.filterMealBySearchValue(searchValue);
-        debugger
         this.setState({
             searchValue: searchValue,
             searchedMeals: searchedMeals
@@ -57,8 +56,9 @@ class MenuContainer extends Component {
     }
 
     render() {
+        const menuGroups = this.state.searchedMeals.length > 0 ? this.state.searchedMeals : this.props.menuGroups;
         return (
-            <Menu menuGroups={this.state.searchedMeals} addMealToMenu={this.props.addMealToMenu} restaurantId={this.props.restaurantId}
+            <Menu menuGroups={menuGroups} addMealToMenu={this.props.addMealToMenu} restaurantId={this.props.restaurantId}
                   removeMealFromMenuGroup={this.props.removeMealFromMenuGroup} addMenuGroup={this.props.addMenuGroup}
                   removeMenuGroup={this.props.removeMenuGroup} currentUser={this.props.currentUser}
                   onSearchChange={this.onSearchChange}/>
