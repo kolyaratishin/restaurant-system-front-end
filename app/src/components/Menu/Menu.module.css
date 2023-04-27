@@ -2,7 +2,8 @@
     display: flex;
     margin-top: 10px;
 }
-.menu{
+
+.menu {
     flex: 0 0 500px;
     margin-right: 100px;
 }
@@ -12,19 +13,39 @@
     position: relative;
     border-collapse: collapse;
     width: 100%;
+    max-width: 100%;
     margin-top: 20px;
+    color: #333;
+    font-size: 16px;
 }
-.menu_table .remove_button{
+
+.menu_table .remove_button {
     width: 3%;
     border: none;
+    background-color: white;
 }
 
 .menu_table td, th {
-    border: 1px solid #999;
+    border: 1px solid #ccc;
     padding: 5px;
+    text-align: left;
+    vertical-align: middle;
 }
 
-.menu_form{
+.menu_table th {
+    background-color: rgba(231,215,219,0.74);
+    font-weight: bold;
+}
+
+.menu_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.menu_table tr:hover {
+    background-color: #ddd;
+}
+
+.menu_form {
     flex: 0 0 280px;
     margin-right: 30px;
     border: 2px solid blue;

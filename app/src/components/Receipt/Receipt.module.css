@@ -1,7 +1,4 @@
-.receipt_content{
-
-}
-.receipt_content{
+.receipt_content {
     display: flex;
     margin-top: 10px;
 }
@@ -16,15 +13,35 @@
 }
 
 .receipt_table {
-    text-align: right;
     position: relative;
     border-collapse: collapse;
     width: 100%;
+    color: #333;
+    font-size: 16px;
 }
 
 .receipt_table td, th {
-    border: 1px solid #999;
+    border: 1px solid #ccc;
     padding: 5px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.receipt_table th {
+    background-color: rgba(255,243,73,0.75);
+    font-weight: bold;
+}
+
+.receipt_table .sum_row {
+    background-color:rgba(27, 141, 255, 0.64);
+}
+
+.receipt_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.receipt_table tr:hover {
+    background-color: rgba(249,233,237,0.75);
 }
 
 .receipt .count_button {

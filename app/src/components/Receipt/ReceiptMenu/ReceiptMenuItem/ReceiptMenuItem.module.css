@@ -9,6 +9,7 @@
 .row .add_button {
     width: 3%;
     border: none;
+    background-color: white;
 }
 
 .remove_button button{

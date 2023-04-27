@@ -1,13 +1,29 @@
 .menu_table {
-    text-align: right;
     position: relative;
     border-collapse: collapse;
     width: 95%;
+    color: #333;
+    font-size: 16px;
 }
 
 .menu_table td, th {
-    border: 1px solid #999;
+    border: 1px solid #ccc;
     padding: 5px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.menu_table th {
+    background-color: rgba(231,215,219,0.74);
+    font-weight: bold;
+}
+
+.menu_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.menu_table tr:hover {
+    background-color: #ddd;
 }
 
 .group_name {

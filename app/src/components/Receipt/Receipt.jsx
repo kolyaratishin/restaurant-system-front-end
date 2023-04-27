@@ -36,7 +36,7 @@ function Receipt(props) {
                     </tr>
                     {meals.map(meal => <ReceiptItem receiptId={props.currentReceipt.id} id={meal.id} name={meal.name} price={meal.price} amount={meal.amount} removeMealFromReceipt={props.removeMealFromReceipt}/>)}
                     <tr>
-                        <th colSpan="3">Cума: {totalPrice}</th>
+                        <th className={classes.sum_row} colSpan="3">Cума: {totalPrice}</th>
                     </tr>
                 </table>
                 <button className={classes.count_button} onClick={countReceipt}>Обрахувати</button>
