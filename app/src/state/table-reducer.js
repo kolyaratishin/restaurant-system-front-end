@@ -3,33 +3,23 @@ import {tableApi} from "../api/api";
 const SET_TABLES = "SET_TABLES"
 const ADD_TABLE = "ADD_TABLE"
 const SET_CURRENT_TABLE = "SET_CURRENT_TABLE"
-const SET_STATUS = "SET_STATUS"
 
 let initialState = {
-    tables: [
-
-    ],
+    tables: [],
     currentTable: {}
 }
 
 const tableReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_TABLES:
-            return {...state, tables: action.tables}
+            const sortedTables = action.tables.sort((a, b) => a.id - b.id);
+            return {...state, tables: sortedTables}
         case ADD_TABLE:
             const newTables = [...state.tables];
             newTables.push(action.table);
             return {...state, tables: [...newTables]};
-        case SET_CURRENT_TABLE:{
+        case SET_CURRENT_TABLE: {
             return {...state, currentTable: {...action.table}};
-        }
-        case SET_STATUS: {
-            const newTables = [...state.tables];
-            const index = newTables.findIndex(table => table.id === action.table.id);
-            if(index > -1){
-                newTables[index] = action.table;
-            }
-            return {...state, tables: [...newTables], currentTable: {...action.table}};
         }
         default:
             return state;
@@ -77,14 +67,17 @@ export const setCurrentTable = (table) => {
 export const setStatus = (status, tableId) => {
     return (dispatch) => {
         tableApi.changeStatus(status, tableId)
-            .then(data => {
-                dispatch(setStatusAC(data.data));
+            .then(response => {
+                dispatch(setCurrentTable(response.data));
+                return response.data.restaurantId
+            })
+            .then(restaurantId => {
+                tableApi.getAll(restaurantId)
+                    .then(data => {
+                        dispatch(setTables(data.data));
+                    })
             })
     }
-}
-
-export const setStatusAC = (table) => {
-    return {type: SET_STATUS, table};
 }
 
 export default tableReducer;
