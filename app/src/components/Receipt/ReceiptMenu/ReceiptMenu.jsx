@@ -26,7 +26,7 @@ function ReceiptMenu(props) {
                                     </th>
                                 </tr>
                                 {
-                                    item.menu.map(menuItem => <ReceiptMenuItem receiptId={props.receiptId} id={menuItem.id}
+                                    item.menu.map(menuItem => <ReceiptMenuItem receiptId={props.currentReceipt.id} id={menuItem.id}
                                                                                name={menuItem.name} price={menuItem.price}
                                                                                size={menuItem.size}
                                                                                addMealToReceipt={props.addMealToReceipt}/>)}
