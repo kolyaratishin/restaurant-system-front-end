@@ -1,0 +1,21 @@
+.search_input {
+    box-sizing: border-box;
+    width: 50%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    text-align: left;
+    outline: none;
+}
+
+.search_input:focus {
+    border-color: #0066cc;
+}
+
+.search_caption{
+    margin: 0 0 3px 0;
+}

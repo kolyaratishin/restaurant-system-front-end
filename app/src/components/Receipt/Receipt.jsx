@@ -1,8 +1,8 @@
 import classes from "./Receipt.module.css";
 import ReceiptItem from "./ReceiptItem/ReceiptItem";
-import ReceiptMenu from "./ReceiptMenu/ReceiptMenu";
 import TableStatus from "./TableStatus/TableStatus";
 import {Navigate} from "react-router-dom";
+import ReceiptMenuContainer from "./ReceiptMenu/ReceiptMenuContainer";
 
 function Receipt(props) {
     if(!props.currentUser.isAuth){
@@ -42,7 +42,7 @@ function Receipt(props) {
                 <button className={classes.count_button} onClick={countReceipt}>Обрахувати</button>
             </div>
             <div className={classes.menu}>
-                <ReceiptMenu receiptId={props.currentReceipt.id} addMealToReceipt={props.addMealToReceipt} menuGroups={props.menuGroups}/>
+                <ReceiptMenuContainer/>
             </div>
         </div>
     );
