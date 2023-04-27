@@ -80,4 +80,19 @@ export const setStatus = (status, tableId) => {
     }
 }
 
+export const deleteTableById = (tableId) => {
+    return (dispatch) => {
+        tableApi.deleteTableById(tableId)
+            .then(response => {
+                return response.data.restaurantId;
+            })
+            .then(restaurantId => {
+                tableApi.getAll(restaurantId)
+                    .then(data => {
+                        dispatch(setTables(data.data));
+                    })
+            })
+    }
+}
+
 export default tableReducer;

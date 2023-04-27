@@ -98,8 +98,16 @@ export const tableApi = {
             }
         });
     },
-    changeStatus(status,id) {
-        return axiosInstance.post(`table/status/${id}?status=${status}`, {},{
+    changeStatus(status, id) {
+        return axiosInstance.post(`table/status/${id}?status=${status}`, {}, {
+            headers: {
+                authorization: "Basic " + localStorage.getItem("userData"),
+            }
+        });
+    },
+
+    deleteTableById(id) {
+        return axiosInstance.delete(`table/${id}`, {
             headers: {
                 authorization: "Basic " + localStorage.getItem("userData"),
             }
