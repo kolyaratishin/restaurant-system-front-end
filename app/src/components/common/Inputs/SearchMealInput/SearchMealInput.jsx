@@ -6,7 +6,7 @@ const SearchMealInput = (props) => {
             <p className={classes.search_caption}>
                 Пошук по назві
             </p>
-            <input className={classes.search_input} onChange={props.onSearchChange} type="text" placeholder="Ведіть назву страви"/>
+            <input className={classes.search_input} onChange={props.onChange} type="text" placeholder="Ведіть назву страви"/>
         </div>
     );
 }

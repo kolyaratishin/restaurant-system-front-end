@@ -8,7 +8,7 @@ function ReceiptMenu(props) {
 
     return (
         <div>
-            <SearchMealInput/>
+            <SearchMealInput onChange={props.onSearchChange}/>
             <div className={classes.menu}>
                 <table className={classes.menu_table}>
                     <caption>Меню</caption>

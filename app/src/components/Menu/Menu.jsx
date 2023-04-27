@@ -4,6 +4,7 @@ import MenuForm from "./MenuForm/MenuForm";
 import AddGroupForm from "./AddGroupForm/AddGroupForm";
 import {Navigate} from "react-router-dom";
 import RemoveGroupButton from "../common/Buttons/RemoveButton/RemoveGroupButton/RemoveGroupButton";
+import SearchMealInput from "../common/Inputs/SearchMealInput/SearchMealInput";
 
 function Menu(props) {
     if(!props.currentUser.isAuth){
@@ -30,6 +31,7 @@ function Menu(props) {
     return (
         <div className={classes.menu_content}>
             <div className={classes.menu}>
+                <SearchMealInput onChange={props.onSearchChange}/>
                 <table className={classes.menu_table}>
                     <caption>Меню</caption>
                     <tr>
