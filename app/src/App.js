@@ -1,14 +1,14 @@
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Statistics from "./components/Statistics/Statistics";
 import MenuContainer from "./components/Menu/MenuContainer";
 import TablesContainer from "./components/Tables/TablesContainer";
 import ReceiptContainer from "./components/Receipt/ReceiptContainer";
-import ImportExport from "./components/ImportExport/ImportExport";
 import LoginContainer from "./components/Auth/Login/LoginContainer";
 import RegistrationContainer from "./components/Auth/Registration/RegistrationContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import EmployeesContainer from "./components/Employees/EmployeesContainer";
+import ImportExportContainer from "./components/ImportExport/ImportExportContainer";
+import StatisticsContainer from "./components/Statistics/StatisticsContainer";
 
 function App(props) {
 
@@ -24,9 +24,9 @@ function App(props) {
                     <Route path="/menu"
                            element={<MenuContainer/>}/>
                     <Route path="/statistics"
-                           element={<Statistics currentUser={props.store.getState().user.currentUser}/>}/>
+                           element={<StatisticsContainer/>}/>
                     <Route path="/import-export"
-                           element={<ImportExport currentUser={props.store.getState().user.currentUser}/>}/>
+                           element={<ImportExportContainer/>}/>
                     <Route path="/employees"
                            element={<EmployeesContainer/>}/>
                     <Route path="/login"
