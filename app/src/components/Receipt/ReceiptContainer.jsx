@@ -10,10 +10,12 @@ import {getCurrentTableById, setStatus} from "../../state/table-reducer";
 class ReceiptContainer extends Component {
 
     componentDidMount() {
-        let tableId = +this.props.params.tableId;
-        this.props.getReceiptById(tableId);
-        this.props.getMenuGroups(this.props.restaurantId);
-        this.props.getCurrentTableById(tableId);
+        if (this.props.currentUser.isAuth) {
+            let tableId = +this.props.params.tableId;
+            this.props.getReceiptById(tableId);
+            this.props.getMenuGroups(this.props.restaurantId);
+            this.props.getCurrentTableById(tableId);
+        }
     }
 
     findCurrentTable(id, tables) {
@@ -27,7 +29,8 @@ class ReceiptContainer extends Component {
                      addMealToReceipt={this.props.addMealToReceipt}
                      removeMealFromReceipt={this.props.removeMealFromReceipt}
                      currentTable={this.props.currentTable}
-                     setStatus={this.props.setStatus}/>
+                     setStatus={this.props.setStatus}
+                     currentUser={this.props.currentUser}/>
         );
     }
 }
@@ -38,7 +41,8 @@ function mapStateToProps(state) {
         currentReceipt: state.receiptPage.currentReceipt,
         menuGroups: state.menuPage.menuGroups,
         restaurantId: state.user.currentUser.restaurantId,
-        currentTable: state.tablesPage.currentTable
+        currentTable: state.tablesPage.currentTable,
+        currentUser: state.user.currentUser
     }
 }
 

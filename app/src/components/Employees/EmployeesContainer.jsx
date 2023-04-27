@@ -6,14 +6,17 @@ import {addEmployee, getEmployees, removeEmployee} from "../../state/employee-re
 
 class EmployeeContainer extends Component {
     componentDidMount() {
-        this.props.getEmployees(this.props.adminUsername);
+        if (this.props.currentUser.isAuth) {
+            this.props.getEmployees(this.props.adminUsername);
+        }
     }
 
 
     render() {
         return (
             <Employees employees={this.props.employees} addEmployee={this.props.addEmployee} adminUsername={this.props.adminUsername}
-                       removeEmployee={this.props.removeEmployee}/>
+                       removeEmployee={this.props.removeEmployee}
+                       currentUser={this.props.currentUser}/>
         );
     }
 }
@@ -22,7 +25,8 @@ class EmployeeContainer extends Component {
 function mapStateToProps(state) {
     return {
         employees: state.employeePage.employees,
-        adminUsername: state.user.currentUser.username
+        adminUsername: state.user.currentUser.username,
+        currentUser: state.user.currentUser
     }
 }
 

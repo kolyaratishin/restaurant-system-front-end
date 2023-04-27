@@ -2,8 +2,13 @@ import classes from "./Receipt.module.css";
 import ReceiptItem from "./ReceiptItem/ReceiptItem";
 import ReceiptMenu from "./ReceiptMenu/ReceiptMenu";
 import TableStatus from "./TableStatus/TableStatus";
+import {Navigate} from "react-router-dom";
 
 function Receipt(props) {
+    if(!props.currentUser.isAuth){
+        return <Navigate to={"/login"}/>
+    }
+
     let meals = []
     let currentReceipt = props.currentReceipt;
     let totalPrice = 0;

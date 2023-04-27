@@ -10,7 +10,8 @@ import RegistrationContainer from "./components/Auth/Registration/RegistrationCo
 import HeaderContainer from "./components/Header/HeaderContainer";
 import EmployeesContainer from "./components/Employees/EmployeesContainer";
 
-function App() {
+function App(props) {
+
     return (
         <BrowserRouter>
             <HeaderContainer/>
@@ -23,9 +24,9 @@ function App() {
                     <Route path="/menu"
                            element={<MenuContainer/>}/>
                     <Route path="/statistics"
-                           element={<Statistics/>}/>
+                           element={<Statistics currentUser={props.store.getState().user.currentUser}/>}/>
                     <Route path="/import-export"
-                           element={<ImportExport/>}/>
+                           element={<ImportExport currentUser={props.store.getState().user.currentUser}/>}/>
                     <Route path="/employees"
                            element={<EmployeesContainer/>}/>
                     <Route path="/login"

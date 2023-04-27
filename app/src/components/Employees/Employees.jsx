@@ -1,8 +1,12 @@
 import classes from "./Employees.module.css";
 import Employee from "./Employee/Emloyee";
 import EmployeeAddForm from "./EmployeeAddForm/EmployeeAddForm";
+import {Navigate} from "react-router-dom";
 
 function Employees(props) {
+    if (!props.currentUser.isAuth){
+        return <Navigate to={"/login"}/>
+    }
     const employees = props.employees;
 
     const addEmployee = (values) => {

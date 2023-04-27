@@ -12,7 +12,9 @@ import {
 
 class MenuContainer extends Component {
     componentDidMount() {
-        this.props.getMenuGroups(this.props.restaurantId);
+        if (this.props.currentUser.isAuth) {
+            this.props.getMenuGroups(this.props.restaurantId);
+        }
     }
 
     onPageChanged = (page) => {
