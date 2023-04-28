@@ -6,6 +6,7 @@
 .receipt {
     flex: 0 0 600px;
     margin-right: 30px;
+    text-align: center;
 }
 
 .menu {
@@ -44,9 +45,35 @@
     background-color: rgba(249,233,237,0.75);
 }
 
+.count_button_container{
+    display: inline-block;
+}
+
 .receipt .count_button {
-    margin-top: 10px;
-    margin-left: 150px;
-    width: 200px;
-    height: 50px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.receipt .count_button:hover{
+    background-color: #0069d9;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.receipt .count_button:focus{
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.receipt .count_button:active{
+    transform: translateY(1px);
+    box-shadow: none;
 }

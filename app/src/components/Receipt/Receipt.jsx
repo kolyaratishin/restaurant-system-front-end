@@ -39,7 +39,9 @@ function Receipt(props) {
                         <th className={classes.sum_row} colSpan="3">Cума: {totalPrice}</th>
                     </tr>
                 </table>
-                <button className={classes.count_button} onClick={countReceipt}>Обрахувати</button>
+                <div className={classes.count_button_container}>
+                    <button className={classes.count_button} onClick={countReceipt}>Обрахувати</button>
+                </div>
             </div>
             <div className={classes.menu}>
                 <ReceiptMenuContainer/>
