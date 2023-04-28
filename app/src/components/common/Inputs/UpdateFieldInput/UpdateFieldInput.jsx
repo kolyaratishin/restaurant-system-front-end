@@ -4,7 +4,8 @@ class UpdateFieldInput extends React.Component {
 
     state = {
         editMode: false,
-        value: this.props.value
+        value: this.props.value,
+        initialValue: this.props.value
     }
 
     activateEditMode = () => {
@@ -17,7 +18,9 @@ class UpdateFieldInput extends React.Component {
         this.setState({
             editMode: false
         });
-        this.props.updateValue(this.state.value);
+        if (this.state.initialValue !== this.state.value) {
+            this.props.updateValue(this.state.value);
+        }
     }
 
     onStatusChange = (e) => {
@@ -27,9 +30,10 @@ class UpdateFieldInput extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevProps.value !== this.props.value){
+        if (prevProps.value !== this.props.value) {
             this.setState({
-                value: this.props.value
+                value: this.props.value,
+                initialValue: this.props.value
             })
         }
     }
@@ -44,7 +48,8 @@ class UpdateFieldInput extends React.Component {
                 }
                 {this.state.editMode &&
                     <div>
-                        <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.value}/>
+                        <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode}
+                               value={this.state.value}/>
                     </div>
                 }
 
