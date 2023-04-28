@@ -54,7 +54,8 @@ function Menu(props) {
                                     </td>
                                 </tr>
                                 {item.menu.map(menuItem => <MenuItem id={menuItem.id} name={menuItem.name} price={menuItem.price}
-                                                                size={menuItem.size} groupId={item.id} removeMealFromMenuGroup={props.removeMealFromMenuGroup}/>)}
+                                                                size={menuItem.size} groupId={item.id} removeMealFromMenuGroup={props.removeMealFromMenuGroup}
+                                                                     updateMeal={props.updateMeal}/>)}
                                 </tbody>
                             )
                         }

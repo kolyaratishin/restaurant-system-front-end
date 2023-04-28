@@ -70,7 +70,14 @@ export const menuApi = {
                 authorization: "Basic " + localStorage.getItem("userData"),
             }
         });
-    }
+    },
+    updateMeal(id, meal) {
+        return axiosInstance.put(`meal/${id}`, meal, {
+            headers: {
+                authorization: "Basic " + localStorage.getItem("userData"),
+            }
+        });
+    },
 }
 
 export const tableApi = {

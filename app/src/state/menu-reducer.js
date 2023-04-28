@@ -34,6 +34,9 @@ const menuReducer = (state = initialState, action) => {
             return {...state, menuGroups: [...newMenuGroups]}
         }
         case SET_MENU_GROUPS:
+            action.menuGroups.forEach(menuGroup => {
+                menuGroup.menu.sort((a,b) => a.id - b.id);
+            });
             return {...state, menuGroups: [...action.menuGroups]}
         case ADD_MENU_GROUP:{
             const newMenuGroups = [...state.menuGroups];
@@ -134,6 +137,22 @@ export const removeMenuGroup = (groupId) => {
                 menuApi.removeMenuGroup(groupId)
                     .then(() => {
                         getAllMenuGroups(restaurantId, dispatch);
+                    });
+            })
+
+    }
+}
+
+export const updateMeal = (id, meal) => {
+    return (dispatch) => {
+        menuApi.updateMeal(id, meal)
+            .then(response => {
+                return response.data.mealGroupId;
+            })
+            .then(mealGroupId => {
+                menuApi.getMealGroupById(mealGroupId)
+                    .then((response) => {
+                        getAllMenuGroups(response.data.restaurantId, dispatch);
                     });
             })
 
