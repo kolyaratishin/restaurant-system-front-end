@@ -38,8 +38,8 @@ class UpdateFieldInput extends React.Component {
         return (
             <div>
                 {!this.state.editMode &&
-                    <div>
-                        <span onDoubleClick={this.activateEditMode}>{this.props.value}</span>
+                    <div onDoubleClick={this.activateEditMode}>
+                        <span>{this.props.value}</span>
                     </div>
                 }
                 {this.state.editMode &&

@@ -1,5 +1,6 @@
 import classes from "./ReceiptItem.module.css";
 import RemoveItemButton from "../../common/Buttons/RemoveButton/RemoveItemButton/RemoveItemButton";
+import UpdateFieldInput from "../../common/Inputs/UpdateFieldInput/UpdateFieldInput";
 
 function ReceiptItem(props) {
     const handleClick = (event) => {
@@ -14,11 +15,15 @@ function ReceiptItem(props) {
         props.removeMealFromReceipt(meal, props.receiptId);
     };
 
+    const updateMealAmount = (amount) => {
+        props.updateMealAmount(props.receiptId, props.id, amount);
+    }
+
     return (
         <tr className={classes.row}>
             <td className={classes.row_id}>{props.id}</td>
             <td>{props.name}</td>
-            <td>{props.amount}</td>
+            <td><UpdateFieldInput value={props.amount} updateValue={updateMealAmount}/></td>
             <td>{props.price}</td>
             <td className={classes.remove_button}><RemoveItemButton onClick={handleClick}/></td>
         </tr>

@@ -3,7 +3,13 @@ import {connect} from "react-redux";
 import Receipt from "./Receipt";
 import {withRouter} from "../../hoc/withRouter";
 import {compose} from "redux";
-import {addMealToReceipt, countReceipt, getReceiptById, removeMealFromReceipt} from "../../state/receipt-reducer";
+import {
+    addMealToReceipt,
+    countReceipt,
+    getReceiptById,
+    removeMealFromReceipt,
+    updateMealAmount
+} from "../../state/receipt-reducer";
 import {getMenuGroups} from "../../state/menu-reducer";
 import {getCurrentTableById, setStatus} from "../../state/table-reducer";
 
@@ -30,7 +36,8 @@ class ReceiptContainer extends Component {
                      removeMealFromReceipt={this.props.removeMealFromReceipt}
                      currentTable={this.props.currentTable}
                      setStatus={this.props.setStatus}
-                     currentUser={this.props.currentUser}/>
+                     currentUser={this.props.currentUser}
+                     updateMealAmount={this.props.updateMealAmount}/>
         );
     }
 }
@@ -55,7 +62,8 @@ export default compose(
             removeMealFromReceipt,
             getMenuGroups,
             getCurrentTableById,
-            setStatus
+            setStatus,
+            updateMealAmount
         }),
     withRouter,
 )(ReceiptContainer);

@@ -75,4 +75,13 @@ export const removeMealFromReceipt = (meal, receiptId) => {
     }
 }
 
+export const updateMealAmount = (receiptId, mealId, amount) => {
+    return (dispatch) => {
+        receiptApi.updateMealAmount(receiptId, mealId, amount)
+            .then(data => {
+                dispatch(setCurrentReceipt(data.data));
+            })
+    }
+}
+
 export default receiptReducer;

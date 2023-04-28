@@ -5,7 +5,7 @@ import {Navigate} from "react-router-dom";
 import ReceiptMenuContainer from "./ReceiptMenu/ReceiptMenuContainer";
 
 function Receipt(props) {
-    if(!props.currentUser.isAuth){
+    if (!props.currentUser.isAuth) {
         return <Navigate to={"/login"}/>
     }
 
@@ -25,7 +25,8 @@ function Receipt(props) {
 
     return (
         <div className={classes.receipt_content}>
-            <TableStatus status={props.currentTable.status} setStatus={props.setStatus} tableId={props.currentReceipt.id}/>
+            <TableStatus status={props.currentTable.status} setStatus={props.setStatus}
+                         tableId={props.currentReceipt.id}/>
             <div className={classes.receipt}>
                 <table className={classes.receipt_table}>
                     <caption>Замовлення</caption>
@@ -34,7 +35,10 @@ function Receipt(props) {
                         <th>Кількість</th>
                         <th>Ціна</th>
                     </tr>
-                    {meals.map(meal => <ReceiptItem receiptId={props.currentReceipt.id} id={meal.id} name={meal.name} price={meal.price} amount={meal.amount} removeMealFromReceipt={props.removeMealFromReceipt}/>)}
+                    {meals.map(meal => <ReceiptItem receiptId={props.currentReceipt.id} id={meal.id} name={meal.name}
+                                                    price={meal.price} amount={meal.amount}
+                                                    removeMealFromReceipt={props.removeMealFromReceipt}
+                                                    updateMealAmount={props.updateMealAmount}/>)}
                     <tr>
                         <th className={classes.sum_row} colSpan="3">Cума: {totalPrice}</th>
                     </tr>

@@ -153,6 +153,13 @@ export const receiptApi = {
                 authorization: "Basic " + localStorage.getItem("userData"),
             }
         });
+    },
+    updateMealAmount(receiptId, mealId, amount) {
+        return axiosInstance.put(`receipt/${receiptId}/meal/${mealId}?amount=${amount}`, {}, {
+            headers: {
+                authorization: "Basic " + localStorage.getItem("userData"),
+            }
+        });
     }
 }
 
