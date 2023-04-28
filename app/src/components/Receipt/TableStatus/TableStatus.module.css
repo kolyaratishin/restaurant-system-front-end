@@ -1,0 +1,50 @@
+.status{
+    margin-right: 10px;
+}
+
+.status_caption{
+    padding-bottom: 8px;
+}
+
+
+.status_select{
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 200px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.status_select:hover {
+    border-color: #999;
+}
+
+/* Зміна стилю при фокусуванні на елемент select */
+.status_select:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 3px #ddd;
+    outline: none;
+}
+
+/* Зміна стилю випадаючого списку */
+.status_select .status_item {
+    font-size: 14px;
+    font-weight: normal;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Зміна стилю випадаючого списку при наведенні */
+.status_select .status_item:hover {
+    background-color: #eee;
+}
+
+/* Зміна стилю випадаючого списку при виборі елементу */
+.status_select .status_item:checked {
+    background-color: #007bff;
+    color: #fff;
+}

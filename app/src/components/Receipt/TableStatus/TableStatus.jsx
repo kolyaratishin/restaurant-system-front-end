@@ -1,3 +1,5 @@
+import classes from "./TableStatus.module.css";
+
 function TableStatus(props) {
 
     const status = props.status;
@@ -7,14 +9,14 @@ function TableStatus(props) {
     }
 
     return (
-        <div>
-            <div>
-                Статус
+        <div className={classes.status}>
+            <div className={classes.status_caption}>
+                Статус стола
             </div>
-            <select onChange={setStatus} name="tableStatus" id="tableStatus" value={status}>
-                <option value="FREE">Вільно</option>
-                <option value="BUSY">Зайнято</option>
-                <option value="RESERVED">Замовлено</option>
+            <select className={classes.status_select} onChange={setStatus} name="tableStatus" id="tableStatus" value={status}>
+                <option className={classes.status_item} value="FREE">Вільно</option>
+                <option className={classes.status_item} value="BUSY">Зайнято</option>
+                <option className={classes.status_item} value="RESERVED">Замовлено</option>
             </select>
         </div>
     );
