@@ -1,3 +1,28 @@
-.import_content{
-    padding: 10px;
+.export_content {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.export_caption {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.download_button button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.download_button button:hover {
+    background-color: #3e8e41;
 }

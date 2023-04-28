@@ -10,10 +10,10 @@ function Import(props) {
 
     return (
         <div className={classes.import_content}>
-            <h3>
+            <h3 className={classes.import_caption}>
                 Виберіть файл для імпорту даних в меню
             </h3>
-            <div>
+            <div className={classes.import}>
                 <input type="file" onChange={handleFileChange}/>
             </div>
         </div>
