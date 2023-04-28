@@ -7,10 +7,10 @@ import AddButton from "../../common/Buttons/AddButton/AddButton";
 function AddGroupForm(props) {
     return (
         <form onSubmit={props.handleSubmit}>
-            <div>
+            <div className={classes.form_field}>
                 <p className={classes.input_name}>Назва</p>
                 <Field component={Textarea} name="groupName" placeholder="Введіть ім'я групи"
-                       validate={[requiredField]}/>
+                       validate={[requiredField]} className={classes.textarea}/>
             </div>
             <AddButton/>
         </form>

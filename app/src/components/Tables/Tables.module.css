@@ -29,7 +29,7 @@
 .table_form {
     flex: 0 0 280px;
     margin-right: 30px;
-    border: 2px solid blue;
+    border: 2px solid rgba(45,26,107,0.42);
     border-radius: 10px;
     padding-left: 20px;
     padding-bottom: 20px;
@@ -38,6 +38,6 @@
 }
 .table_form_caption {
     text-align: center;
-    margin: 2px 3px 4px 1px;
+    margin: 7px 3px 4px 1px;
     font-weight: bold;
 }
