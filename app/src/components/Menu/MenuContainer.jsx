@@ -56,7 +56,7 @@ class MenuContainer extends Component {
     }
 
     render() {
-        const menuGroups = this.state.searchedMeals.length > 0 ? this.state.searchedMeals : this.props.menuGroups;
+        const menuGroups = this.state.searchedMeals.length > 1 ? this.state.searchedMeals : this.props.menuGroups;
         return (
             <Menu menuGroups={menuGroups} addMealToMenu={this.props.addMealToMenu} restaurantId={this.props.restaurantId}
                   removeMealFromMenuGroup={this.props.removeMealFromMenuGroup} addMenuGroup={this.props.addMenuGroup}

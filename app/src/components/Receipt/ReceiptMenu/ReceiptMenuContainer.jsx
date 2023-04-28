@@ -12,7 +12,7 @@ class ReceiptMenuContainer extends Component {
     }
 
     componentDidMount() {
-        this.props.getMenuGroups();
+        this.props.getMenuGroups(this.props.restaurantId);
         this.setState({
             searchValue: "",
             searchedMeals: this.props.menuGroups
@@ -49,7 +49,7 @@ class ReceiptMenuContainer extends Component {
     }
 
     render() {
-        const menuGroups = this.state.searchedMeals.length > 0 ? this.state.searchedMeals : this.props.menuGroups
+        const menuGroups = this.state.searchedMeals.length > 1 ? this.state.searchedMeals : this.props.menuGroups
         return (
             <ReceiptMenu currentReceipt={this.props.currentReceipt}
                          menuGroups={menuGroups}
@@ -64,6 +64,7 @@ function mapStateToProps(state) {
     return {
         currentReceipt: state.receiptPage.currentReceipt,
         menuGroups: state.menuPage.menuGroups,
+        restaurantId: state.user.currentUser.restaurantId,
     }
 }
 
