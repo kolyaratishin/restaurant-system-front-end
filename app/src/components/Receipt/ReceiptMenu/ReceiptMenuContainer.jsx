@@ -8,7 +8,7 @@ class ReceiptMenuContainer extends Component {
 
     state = {
         searchValue: "",
-        searchedMeals: []
+        searchedMeals: null
     }
 
     componentDidMount() {
@@ -49,7 +49,8 @@ class ReceiptMenuContainer extends Component {
     }
 
     render() {
-        const menuGroups = this.state.searchedMeals.length > 1 ? this.state.searchedMeals : this.props.menuGroups
+        let menuGroups = this.state.searchedMeals ? this.state.searchedMeals : this.props.menuGroups;
+
         return (
             <ReceiptMenu currentReceipt={this.props.currentReceipt}
                          menuGroups={menuGroups}
