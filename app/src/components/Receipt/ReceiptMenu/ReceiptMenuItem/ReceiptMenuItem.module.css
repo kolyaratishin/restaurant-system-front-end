@@ -15,3 +15,7 @@
 .remove_button button{
     cursor: pointer;
 }
+
+.row .meal_name{
+    word-break: break-all;
+}

@@ -4,8 +4,9 @@
 }
 
 .menu {
-    flex: 0 0 500px;
-    margin-right: 100px;
+    flex: 0 0 520px;
+    margin-right: 70px;
+    margin-left: 10px;
 }
 
 .menu_table {
@@ -47,7 +48,7 @@
 
 .menu_form {
     flex: 0 0 280px;
-    margin-right: 30px;
+    margin-right: 20px;
     border: 2px solid rgba(45,26,107,0.42);
     border-radius: 10px;
     padding-left: 20px;

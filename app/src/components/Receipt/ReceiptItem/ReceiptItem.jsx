@@ -22,7 +22,7 @@ function ReceiptItem(props) {
     return (
         <tr className={classes.row}>
             <td className={classes.row_id}>{props.id}</td>
-            <td>{props.name}</td>
+            <td className={classes.meal_name}>{props.name}</td>
             <td><UpdateFieldInput value={props.amount} updateValue={updateMealAmount}/></td>
             <td>{props.price}</td>
             <td className={classes.remove_button}><RemoveItemButton onClick={handleClick}/></td>

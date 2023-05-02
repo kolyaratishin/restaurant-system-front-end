@@ -11,3 +11,7 @@
     border: none;
     background-color: white;
 }
+
+.row .meal_name{
+    word-break: break-all;
+}

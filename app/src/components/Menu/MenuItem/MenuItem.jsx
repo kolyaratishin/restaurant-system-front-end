@@ -29,7 +29,7 @@ function MenuItem(props) {
     return (
         <tr className={classes.row}>
             <td className={classes.row_id}>{props.id}</td>
-            <td><UpdateFieldInput value={props.name} updateValue={updateName}/></td>
+            <td className={classes.meal_name}><UpdateFieldInput value={props.name} updateValue={updateName}/></td>
             <td><UpdateFieldInput value={props.price} updateValue={updatePrice}/></td>
             <td>{props.size}</td>
             <td className={classes.remove_button}>

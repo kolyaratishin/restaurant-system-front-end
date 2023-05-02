@@ -17,7 +17,7 @@ function ReceiptMenuItem(props) {
     return (
         <tr className={classes.row}>
             <td className={classes.row_id}>{props.id}</td>
-            <td>{props.name}</td>
+            <td className={classes.meal_name}>{props.name}</td>
             <td>{props.price}</td>
             <td>{props.size}</td>
             <td className={classes.add_button}><AddMealButton onClick={handleClick}/></td>

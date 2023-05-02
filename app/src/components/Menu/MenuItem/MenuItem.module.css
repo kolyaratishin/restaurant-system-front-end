@@ -6,8 +6,12 @@
     display: none;
 }
 
-.row .remove_button{
+.row .remove_button {
     width: 3%;
     border: none;
     background-color: white;
+}
+
+.row .meal_name {
+    word-break: break-all;
 }
