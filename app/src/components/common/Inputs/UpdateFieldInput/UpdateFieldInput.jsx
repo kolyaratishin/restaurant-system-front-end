@@ -5,7 +5,8 @@ class UpdateFieldInput extends React.Component {
     state = {
         editMode: false,
         value: this.props.value,
-        initialValue: this.props.value
+        initialValue: this.props.value,
+        regExp: new RegExp(this.props.regExp)
     }
 
     activateEditMode = () => {
@@ -24,16 +25,21 @@ class UpdateFieldInput extends React.Component {
     }
 
     onStatusChange = (e) => {
-        this.setState({
-            value: e.currentTarget.value
-        });
+        const value = e.currentTarget.value;
+        const isMatched = this.state.regExp.test(value);
+        if (isMatched || value === "") {
+            this.setState({
+                value: +value
+            });
+        }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.value !== this.props.value) {
             this.setState({
                 value: this.props.value,
-                initialValue: this.props.value
+                initialValue: this.props.value,
+                regExp: this.props.regExp
             })
         }
     }

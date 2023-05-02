@@ -30,7 +30,7 @@ function MenuItem(props) {
         <tr className={classes.row}>
             <td className={classes.row_id}>{props.id}</td>
             <td className={classes.meal_name}><UpdateFieldInput value={props.name} updateValue={updateName}/></td>
-            <td><UpdateFieldInput value={props.price} updateValue={updatePrice}/></td>
+            <td><UpdateFieldInput value={props.price} updateValue={updatePrice} regExp="^\d+(\.\d{0,2})?$"/></td>
             <td>{props.size}</td>
             <td className={classes.remove_button}>
                 <RemoveItemButton onClick={handleClick}/>

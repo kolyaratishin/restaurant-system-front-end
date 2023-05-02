@@ -23,7 +23,7 @@ function ReceiptItem(props) {
         <tr className={classes.row}>
             <td className={classes.row_id}>{props.id}</td>
             <td className={classes.meal_name}>{props.name}</td>
-            <td><UpdateFieldInput value={props.amount} updateValue={updateMealAmount}/></td>
+            <td><UpdateFieldInput value={props.amount} updateValue={updateMealAmount} regExp="^[0-9]*$"/></td>
             <td>{props.price}</td>
             <td className={classes.remove_button}><RemoveItemButton onClick={handleClick}/></td>
         </tr>
