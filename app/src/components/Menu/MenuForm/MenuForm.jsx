@@ -18,7 +18,8 @@ function MenuForm(props) {
                 <p className={classes.input_name}>Ціна</p>
                 <Field component={Textarea} name="price" placeholder="Введіть ціну продукту"
                        validate={[requiredField]}
-                       className={classes.textarea}/>
+                       className={classes.textarea}
+                       regExp="^\d+(\.\d{0,2})?$"/>
             </div>
             <div className={classes.form_field}>
                 <p className={classes.input_name}>Розмір</p>
@@ -28,7 +29,8 @@ function MenuForm(props) {
             </div>
             <div className={classes.form_field}>
                 <p className={classes.input_name}>Виберіть групу</p>
-                <Field className={classes.select} component={Select} name="mealGroupId" validate={[requiredField]} menuGroups={menuGroups}/>
+                <Field className={classes.select} component={Select} name="mealGroupId" validate={[requiredField]}
+                       menuGroups={menuGroups}/>
             </div>
             <AddButton/>
         </form>
