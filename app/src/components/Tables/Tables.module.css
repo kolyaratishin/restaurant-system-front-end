@@ -1,20 +1,20 @@
-.tables_content{
+.tables_content {
     display: flex;
 }
 
-.tables{
-    flex: 0 0 800px;
-    margin-right: 100px;
+.tables {
+    flex: 1 1 auto;
+
 }
 
-.tables_container{
+.tables_container {
     display: inline-flex;
     margin-right: 50px;
     margin-top: 10px;
 }
 
-.remove_table_button button{
-    background-color: rgba(255,22,16,0.92);
+.remove_table_button button {
+    background-color: rgba(255, 22, 16, 0.92);
     border: none;
     border-radius: 5px;
     padding-top: 2px;
@@ -22,20 +22,21 @@
     margin-top: 5px;
 }
 
-.remove_table_button button:hover{
-    background-color: rgba(255,22,16,0.64);
+.remove_table_button button:hover {
+    background-color: rgba(255, 22, 16, 0.64);
 }
 
 .table_form {
-    flex: 0 0 280px;
+    flex: 0 0 200px;
     margin-right: 30px;
-    border: 2px solid rgba(45,26,107,0.42);
+    border: 2px solid rgba(45, 26, 107, 0.42);
     border-radius: 10px;
     padding-left: 20px;
     padding-bottom: 20px;
     height: 100%;
     margin-top: 10px;
 }
+
 .table_form_caption {
     text-align: center;
     margin: 7px 3px 4px 1px;

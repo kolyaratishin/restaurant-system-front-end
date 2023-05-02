@@ -26,16 +26,20 @@ function Tables(props) {
                             <Table id={table.id} name={table.name} status={table.status}
                                    deleteTableById={props.deleteTableById}/>
                         </NavLink>
-                        <div className={classes.remove_table_button}>
-                            <button onClick={() => onRemoveTableClick(table.id)}>✖</button>
-                        </div>
+                        {props.currentUser.role === "ADMIN" ?
+                            <div className={classes.remove_table_button}>
+                                <button onClick={() => onRemoveTableClick(table.id)}>✖</button>
+                            </div> : ""}
+
                     </div>
                 )}
             </div>
-            <div className={classes.table_form}>
-                <p className={classes.table_form_caption}>ДОДАТИ НОВИЙ СТІЛ</p>
-                <TableForm onSubmit={addTable}/>
-            </div>
+            {props.currentUser.role === "ADMIN" ?
+                <div className={classes.table_form}>
+                    <p className={classes.table_form_caption}>ДОДАТИ НОВИЙ СТІЛ</p>
+                    <TableForm onSubmit={addTable}/>
+                </div> : ""}
+
         </div>
     );
 }

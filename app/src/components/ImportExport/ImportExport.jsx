@@ -6,6 +6,11 @@ function ImportExport(props) {
     if (!props.currentUser.isAuth){
         return <Navigate to={"/login"}/>
     }
+
+    if(props.currentUser.role !== "ADMIN"){
+        return <Navigate to={"/tables"}/>
+    }
+
     return (
         <div>
             <ImportContainer/>
