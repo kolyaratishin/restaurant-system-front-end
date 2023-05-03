@@ -20,8 +20,7 @@ class MenuContainer extends Component {
         if (this.props.currentUser.isAuth) {
             this.props.getMenuGroups(this.props.restaurantId);
             this.setState({
-                searchValue: "",
-                searchedMeals: this.props.menuGroups
+                searchValue: ""
             })
         }
     }
@@ -30,7 +29,7 @@ class MenuContainer extends Component {
         if (prevState.searchValue !== this.state.searchValue) {
             this.setState({
                 searchValue: this.state.searchValue,
-                searchedMeals:this.state.searchedMeals
+                searchedMeals: this.state.searchedMeals
             })
         }
     }
@@ -49,7 +48,7 @@ class MenuContainer extends Component {
             .filter(menuGroup => menuGroup.menu.length > 0);
     }
 
-    findMealsInMealGroup(menuGroup, searchValue){
+    findMealsInMealGroup(menuGroup, searchValue) {
         const newMenuGroup = {...menuGroup};
         newMenuGroup.menu = [...newMenuGroup.menu.filter(meal => meal.name.startsWith(searchValue))]
         return newMenuGroup;
@@ -58,7 +57,8 @@ class MenuContainer extends Component {
     render() {
         const menuGroups = this.state.searchedMeals ? this.state.searchedMeals : this.props.menuGroups;
         return (
-            <Menu menuGroups={menuGroups} addMealToMenu={this.props.addMealToMenu} restaurantId={this.props.restaurantId}
+            <Menu menuGroups={menuGroups} addMealToMenu={this.props.addMealToMenu}
+                  restaurantId={this.props.restaurantId}
                   removeMealFromMenuGroup={this.props.removeMealFromMenuGroup} addMenuGroup={this.props.addMenuGroup}
                   removeMenuGroup={this.props.removeMenuGroup} currentUser={this.props.currentUser}
                   onSearchChange={this.onSearchChange}

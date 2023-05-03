@@ -15,7 +15,6 @@ class ReceiptMenuContainer extends Component {
         this.props.getMenuGroups(this.props.restaurantId);
         this.setState({
             searchValue: "",
-            searchedMeals: this.props.menuGroups
         })
     }
 
