@@ -1,6 +1,4 @@
-import {importApi, menuApi} from "../api/api";
-import {saveAs} from 'file-saver';
-import {clearExportError, clearUploadError, setExportError, setUploadError} from "./error-reducer";
+import {menuApi} from "../api/api";
 
 const ADD_MEAL_TO_MENU = "ADD_MEAL_TO_MENU"
 const SET_MENU_GROUPS = "SET_MENU_GROUPS"
@@ -71,32 +69,7 @@ const setMenuGroups = (menuGroups) => {
     return {type: SET_MENU_GROUPS, menuGroups};
 }
 
-export const importMenuFromFile = (formData, restaurantId) => {
-    return (dispatch) => {
-        importApi.import(formData, restaurantId)
-            .then(() => {
-                getAllMenuGroups(restaurantId, dispatch);
-                dispatch(clearUploadError());
-            })
-            .catch(error => {
-                dispatch(setUploadError(error.response.data));
-            })
-    }
-}
 
-export const exportMenuToFile = (restaurantId) => {
-    return (dispatch) => {
-        importApi.export(restaurantId)
-            .then((response) => {
-                dispatch(clearExportError());
-                const file = new Blob([response.data], {type: 'application/octet-stream'});
-                saveAs(file, 'export.csv');
-            })
-            .catch(error => {
-                dispatch(setExportError(error));
-            })
-    }
-}
 
 export const removeMealFromMenuGroup = (menuGroupId, mealId) => {
     return (dispatch) => {
@@ -113,7 +86,7 @@ export const removeMealFromMenuGroup = (menuGroupId, mealId) => {
     }
 }
 
-const getAllMenuGroups = (restaurantId, dispatch) => {
+export const getAllMenuGroups = (restaurantId, dispatch) => {
     menuApi.getAll(restaurantId)
         .then(data => {
             dispatch(setMenuGroups(data.data));

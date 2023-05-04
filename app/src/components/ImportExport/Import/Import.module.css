@@ -40,3 +40,7 @@
 .upload_error{
     color: red;
 }
+
+.upload_success{
+    color: green;
+}

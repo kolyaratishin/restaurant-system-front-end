@@ -7,6 +7,7 @@ import {reducer as formReducer} from "redux-form";
 import userReducer from "./user-reducer";
 import employeeReducer from "./employee-reducer";
 import errorReducer from "./error-reducer";
+import importExportReducer from "./import-export-reducer";
 
 let reducers = combineReducers({
     menuPage: menuReducer,
@@ -15,6 +16,7 @@ let reducers = combineReducers({
     user: userReducer,
     employeePage: employeeReducer,
     errors: errorReducer,
+    importExport: importExportReducer,
     form: formReducer
 })
 

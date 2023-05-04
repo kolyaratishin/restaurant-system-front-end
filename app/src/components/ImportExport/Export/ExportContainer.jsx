@@ -1,8 +1,7 @@
 import {Component} from "react";
 import {connect} from "react-redux";
 import Export from "./Export";
-import {exportMenuToFile, importMenuFromFile} from "../../../state/menu-reducer";
-
+import {exportMenuToFile} from "../../../state/import-export-reducer";
 
 
 class ExportContainer extends Component {
@@ -10,7 +9,8 @@ class ExportContainer extends Component {
 
     render() {
         return (
-            <Export exportMenuToFile={this.props.exportMenuToFile} restaurantId={this.props.restaurantId} exportError={this.props.exportError}/>
+            <Export exportMenuToFile={this.props.exportMenuToFile} restaurantId={this.props.restaurantId}
+                    exportError={this.props.exportError}/>
         );
     }
 }
@@ -24,7 +24,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-    importMenuFromFile,
     exportMenuToFile
 })(ExportContainer);
 
