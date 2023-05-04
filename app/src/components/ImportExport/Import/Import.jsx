@@ -7,6 +7,7 @@ function Import(props) {
         formData.append('file', file);
         props.importMenuFromFile(formData, props.restaurantId);
     }
+    const uploadError = props.uploadError;
 
     return (
         <div className={classes.import_content}>
@@ -16,6 +17,7 @@ function Import(props) {
             <div className={classes.import}>
                 <input type="file" onChange={handleFileChange}/>
             </div>
+            {uploadError ? <span className={classes.upload_error}>{uploadError}</span> : ""}
         </div>
     );
 }

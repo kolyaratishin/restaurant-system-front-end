@@ -6,6 +6,7 @@ import thunk from "redux-thunk";
 import {reducer as formReducer} from "redux-form";
 import userReducer from "./user-reducer";
 import employeeReducer from "./employee-reducer";
+import errorReducer from "./error-reducer";
 
 let reducers = combineReducers({
     menuPage: menuReducer,
@@ -13,6 +14,7 @@ let reducers = combineReducers({
     receiptPage: receiptReducer,
     user: userReducer,
     employeePage: employeeReducer,
+    errors: errorReducer,
     form: formReducer
 })
 

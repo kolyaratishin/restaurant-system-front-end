@@ -10,7 +10,7 @@ class ExportContainer extends Component {
 
     render() {
         return (
-            <Export exportMenuToFile={this.props.exportMenuToFile} restaurantId={this.props.restaurantId}/>
+            <Export exportMenuToFile={this.props.exportMenuToFile} restaurantId={this.props.restaurantId} exportError={this.props.exportError}/>
         );
     }
 }
@@ -18,7 +18,8 @@ class ExportContainer extends Component {
 
 function mapStateToProps(state) {
     return {
-        restaurantId: state.user.currentUser.restaurantId
+        restaurantId: state.user.currentUser.restaurantId,
+        exportError: state.errors.exportError
     }
 }
 

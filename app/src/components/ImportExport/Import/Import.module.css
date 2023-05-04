@@ -36,3 +36,7 @@
 .import input[type="file"]::-webkit-file-upload-button:hover {
     background-color: #3e8e41;
 }
+
+.upload_error{
+    color: red;
+}

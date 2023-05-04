@@ -5,6 +5,8 @@ function Export(props) {
         props.exportMenuToFile(props.restaurantId);
     }
 
+    const uploadError = props.uploadError;
+
     return (
         <div className={classes.export_content}>
             <h3 className={classes.export_caption}>
@@ -13,6 +15,7 @@ function Export(props) {
             <div className={classes.download_button}>
                 <button onClick={onDownloadButtonClick}>Заважнтажити</button>
             </div>
+            {uploadError ? <span className={classes.export_error}>{uploadError}</span> : ""}
         </div>
     );
 }

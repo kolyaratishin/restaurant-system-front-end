@@ -1,5 +1,6 @@
 import {importApi, menuApi} from "../api/api";
-import { saveAs } from 'file-saver';
+import {saveAs} from 'file-saver';
+import {clearExportError, clearUploadError, setExportError, setUploadError} from "./error-reducer";
 
 const ADD_MEAL_TO_MENU = "ADD_MEAL_TO_MENU"
 const SET_MENU_GROUPS = "SET_MENU_GROUPS"
@@ -10,9 +11,7 @@ let initialState = {
         {
             id: 0,
             name: "",
-            menu: [
-
-            ]
+            menu: []
         }
     ]
 }
@@ -35,10 +34,10 @@ const menuReducer = (state = initialState, action) => {
         }
         case SET_MENU_GROUPS:
             action.menuGroups.forEach(menuGroup => {
-                menuGroup.menu.sort((a,b) => a.id - b.id);
+                menuGroup.menu.sort((a, b) => a.id - b.id);
             });
             return {...state, menuGroups: [...action.menuGroups]}
-        case ADD_MENU_GROUP:{
+        case ADD_MENU_GROUP: {
             const newMenuGroups = [...state.menuGroups];
             newMenuGroups.push(action.menuGroup);
             return {...state, menuGroups: [...newMenuGroups]};
@@ -77,16 +76,24 @@ export const importMenuFromFile = (formData, restaurantId) => {
         importApi.import(formData, restaurantId)
             .then(() => {
                 getAllMenuGroups(restaurantId, dispatch);
+                dispatch(clearUploadError());
+            })
+            .catch(error => {
+                dispatch(setUploadError(error.response.data));
             })
     }
 }
 
 export const exportMenuToFile = (restaurantId) => {
-    return () => {
+    return (dispatch) => {
         importApi.export(restaurantId)
             .then((response) => {
-                const file = new Blob([response.data], { type: 'application/octet-stream' });
+                dispatch(clearExportError());
+                const file = new Blob([response.data], {type: 'application/octet-stream'});
                 saveAs(file, 'export.csv');
+            })
+            .catch(error => {
+                dispatch(setExportError(error));
             })
     }
 }
