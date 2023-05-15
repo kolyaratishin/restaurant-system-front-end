@@ -1,27 +1,45 @@
 import {Component} from "react";
 import {connect} from "react-redux";
 import Registration from "./Registration";
-import {register} from "../../../state/user-reducer";
+import {userApi} from "../../../api/api";
 
 class RegistrationContainer extends Component {
-    componentDidMount() {
+    state = {
+        successfulRegistration: null
+    }
 
+    componentDidMount() {
+        this.setState({
+            successfulRegistration: null
+        })
+    }
+
+    register = (username, password) => {
+        userApi.register(username, password)
+            .then(() => {
+                this.setState({
+                    successfulRegistration: true
+                })
+            })
+            .catch(() => {
+                this.setState({
+                    successfulRegistration: false
+                })
+            });
     }
 
     render() {
         return (
-            <Registration register={this.props.register}/>
+            <Registration register={this.register} successfulRegistration={this.state.successfulRegistration}/>
         );
     }
 }
 
 
 function mapStateToProps(state) {
-    return {
-
-    }
+    return {}
 }
 
 export default connect(mapStateToProps, {
-    register
+
 })(RegistrationContainer);

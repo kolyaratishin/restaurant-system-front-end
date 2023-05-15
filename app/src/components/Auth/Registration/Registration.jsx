@@ -3,24 +3,29 @@ import {Field, reduxForm} from "redux-form";
 import {withRouter} from "../../../hoc/withRouter";
 
 function Registration(props) {
-
     return (
-       <div>
-           <RegistrationFormRedux register={props.register}/>
-       </div>
+        <div>
+            <RegistrationFormRedux register={props.register} successfulRegistration={props.successfulRegistration}/>
+        </div>
     );
 }
 
 function RegistrationForm(props) {
     const onLoginSubmit = (values) => {
         props.register(values.username, values.password);
-        props.navigate("/login");
     }
 
+    const successfulRegistration = props.successfulRegistration;
     return (
         <div className={classes.form_container}>
             <form className={classes.login_form} onSubmit={props.handleSubmit(onLoginSubmit)}>
                 <h2>Реєстрація</h2>
+                {successfulRegistration === true ?
+                    <div className={classes.success}>Ви успішно зареєструвалися</div> :
+                    successfulRegistration === false ?
+                        <div className={classes.error}>Користувач з таким логіном вже існує</div> :
+                        null
+                }
                 <div>
                     <div className={classes.form_group}>
                         <p className={classes.input_name}>Логін</p>
