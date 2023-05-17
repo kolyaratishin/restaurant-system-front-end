@@ -1,12 +1,13 @@
 import {userApi} from "../api/api";
+import {setLoginError} from "./error-reducer";
 
 const SET_CURRENT_USER = "SET_CURRENT_USER"
 
 const emptyUser = {
     username: "",
-        role: "",
-        restaurantId: 0,
-        isAuth: false
+    role: "",
+    restaurantId: 0,
+    isAuth: false
 }
 let initialState = {
     currentUser: emptyUser
@@ -32,6 +33,9 @@ export const login = (username, password) => {
                         response.isAuth = true;
                         dispatch(setCurrentUser(response));
                     });
+            })
+            .catch(error => {
+                dispatch(setLoginError(error.response.data));
             });
     };
 }

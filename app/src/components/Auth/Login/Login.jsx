@@ -1,12 +1,17 @@
 import classes from "./Login.module.css";
 import {Field, reduxForm} from "redux-form";
 import {withRouter} from "../../../hoc/withRouter";
+import {Navigate} from "react-router-dom";
 
 function Login(props) {
 
+    if (props.isAuth) {
+        return <Navigate to="/tables"/>;
+    }
+
     return (
         <div>
-            <LoginFormRedux login={props.login}/>
+            <LoginFormRedux login={props.login} loginError={props.loginError}/>
         </div>
     );
 }
@@ -14,13 +19,13 @@ function Login(props) {
 function LoginForm(props) {
     const onLoginSubmit = (values) => {
         props.login(values.username, values.password);
-        props.navigate("/");
     }
 
     return (
         <div className={classes.form_container}>
             <form className={classes.login_form} onSubmit={props.handleSubmit(onLoginSubmit)}>
                 <h2>Авторизація</h2>
+                {props.loginError && <div className={classes.error}>Не правильний логін або пароль</div>}
                 <div>
                     <div className={classes.form_group}>
                         <p className={classes.input_name}>Логін</p>

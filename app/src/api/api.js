@@ -169,11 +169,12 @@ export const userApi = {
             "userData",
             window.btoa(username + ":" + password)
         );
-        return axiosInstance.get(`user/login`, {
-            headers: {
-                authorization: "Basic " + localStorage.getItem("userData"),
+        return axiosInstance.post(`user/login`,
+            {
+                username,
+                password
             }
-        });
+        );
     },
     getUserByUsername(username) {
         return axiosInstance.get(`user?username=${username}`, {

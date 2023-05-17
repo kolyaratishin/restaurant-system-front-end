@@ -2,17 +2,18 @@ const UPLOAD_ERROR = "UPLOAD_ERROR";
 const EXPORT_ERROR = "EXPORT_ERROR";
 const CLEAR_UPLOAD_ERROR = "CLEAR_UPLOAD_ERROR";
 const CLEAR_EXPORT_ERROR = "CLEAR_EXPORT_ERROR";
+const SET_LOGIN_ERROR = "SET_LOGIN_ERROR";
 
 
 let initialState = {
     uploadError: null,
-    exportError: null
+    exportError: null,
+    loginError: false,
 }
 
 const errorReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPLOAD_ERROR: {
-            debugger
             return {...state, uploadError: action.error}
         }
         case EXPORT_ERROR: {
@@ -23,6 +24,10 @@ const errorReducer = (state = initialState, action) => {
         }
         case CLEAR_EXPORT_ERROR: {
             return {...state, exportError: null}
+        }
+        case SET_LOGIN_ERROR:{
+            debugger
+            return {...state, loginError: action.showError}
         }
         default:
             return state;
@@ -55,6 +60,10 @@ export const clearExportError = () => {
 
 const clearExportErrorAC = () => {
     return {type: CLEAR_EXPORT_ERROR};
+}
+
+export const setLoginError = (showError) => {
+    return {type: SET_LOGIN_ERROR, showError};
 }
 
 export default errorReducer;
