@@ -1,6 +1,6 @@
 import {Field, reduxForm} from "redux-form";
 import classes from "./MenuForm.module.css";
-import {requiredField} from "../../../utils/validators/validators"
+import {priceIsHigherThan0, requiredField} from "../../../utils/validators/validators"
 import {Select, Textarea} from "../../common/FormsControls/FormControls";
 import AddButton from "../../common/Buttons/AddButton/AddButton";
 
@@ -17,7 +17,7 @@ function MenuForm(props) {
             <div className={classes.form_field}>
                 <p className={classes.input_name}>Ціна</p>
                 <Field component={Textarea} name="price" placeholder="Введіть ціну продукту"
-                       validate={[requiredField]}
+                       validate={[requiredField, priceIsHigherThan0]}
                        className={classes.textarea}
                        regExp="^\d+(\.\d{0,2})?$"/>
             </div>
